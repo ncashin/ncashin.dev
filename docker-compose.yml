@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  ncashin.dev:
+    image: ghcr.io/ncashin/ncashin.dev:main
+    build: ./.
+    ports:
+      - "127.0.0.1:4321:4321"
