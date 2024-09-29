@@ -6,10 +6,11 @@ import sitemap from '@astrojs/sitemap';
 
 import node from '@astrojs/node';
 
-// https://astro.build/config
+import tailwind from '@astrojs/tailwind';
+
 export default defineConfig({
-  site: 'https://example.com',
-  integrations: [mdx(), sitemap()],
+  site: 'https://ncashin.dev',
+  integrations: [mdx(), sitemap(), tailwind()],
   output: 'server',
 
   adapter: node({
