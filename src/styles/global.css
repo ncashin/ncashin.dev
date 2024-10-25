@@ -12,6 +12,8 @@
   --gray-light: 229, 233, 240;
   --gray-dark: 34, 41, 57;
   --gray-gradient: rgba(var(--gray-light), 50%), #fff;
+  --gray-gradient: rgba(var(255, 255, ), 50%), #fff;
+
   --box-shadow: 0 2px 6px rgba(var(--gray), 25%),
     0 8px 24px rgba(var(--gray), 33%), 0 16px 32px rgba(var(--gray), 33%);
 }
@@ -30,7 +32,7 @@
   font-display: swap;
 }
 body {
-  font-family: 'Hahmlet';
+  font-family: 'Georgia';
   font-size: 18px;
   margin: 0;
   padding: 0;
@@ -47,9 +49,14 @@ main {
   max-width: calc(100% - 2em);
   margin: auto;
   padding: 3em 1em;
+
 }
 
+
+
 h3 {
+	font-family: 'Tinos';
+
 	font-family: "Mr Dafoe";
 }
 
