@@ -17,7 +17,6 @@
 }
 body {
   font-family: 'Georgia';
-  font-size: 1rem;
   margin: 0;
   padding: 0;
   text-align: left;
@@ -26,18 +25,18 @@ body {
   word-wrap: break-word;
   overflow-wrap: break-word;
   color: rgb(var(--gray-dark));
-  line-height: 1.7;
 }
 
 
 h1 {
 	font-family: "Mr Dafoe";
+  font-size: 1.5rem;
 }
 
 a {
-  color: var(--accent);
+  color: revert;
 }
 a:hover {
-  color: var(--accent);
+  color: revert;
   text-decoration: underline;
 }
