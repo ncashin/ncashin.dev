@@ -38,5 +38,6 @@ a {
 }
 a:hover {
   color: revert;
+  font-style: italic;
   text-decoration: underline;
 }
