@@ -5,7 +5,7 @@
  */
 
 :root {
-  --accent: #0000EE;
+  --accent: #0000ee;
   --accent-dark: #000d8a;
   --black: 15, 18, 25;
   --gray: 96, 115, 159;
@@ -16,7 +16,7 @@
     0 8px 24px rgba(var(--gray), 33%), 0 16px 32px rgba(var(--gray), 33%);
 }
 body {
-  font-family: 'Georgia';
+  font-family: "Georgia";
   margin: 0;
   padding: 0;
   text-align: left;
@@ -27,7 +27,7 @@ body {
 }
 
 h1 {
-	font-family: "Mr Dafoe";
+  font-family: "Mr Dafoe";
   font-size: 1.5rem;
 }
 
@@ -36,6 +36,5 @@ a {
 }
 a:hover {
   color: revert;
-  font-style: italic;
   text-decoration: underline;
 }
