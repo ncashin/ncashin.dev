@@ -17,42 +17,44 @@ import "normalize.css";
       href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Share+Tech+Mono"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <meta name="viewport" content="device-width, initial-scale=1" />
     <meta charset="utf-8" />
   </head>
-  <body class="text-md">
-    <div class="p-10">
-      <HiImNat />
-      <div class="pl-4 pt-2 flex flex-col gap-1.5">
-        <ListItem
-          text="Junior Fullstack Developer at"
-          link="https://c-core.ca"
-          linktext="C-Core"
-        />
-        <ListItem
-          text="2nd Year CS Major studying at"
-          link="https://mun.ca"
-          linktext="MUN"
-        />
-        <ListItem
-          text="Event Coordinator for"
-          link="https://muncompsci.ca/"
-          linktext="MUN CSS"
-        />
+  <body>
+    <div class="w-screen h-screen px-28 py-20">
+      <div class="flex flex-col w-1/4 sm:fixed justify-center pl-30">
+        <h1
+          class="text-4xl font-(family-name: Mr Dafoe) px-7 m-0 hover:drop-shadow-sm w-max">
+          Natalie Cashin
+        </h1>
+        <div class="flex flex-col pl-9 gap-0.5">
+          <div>
+            <i class="fa-solid fa-envelope w-3.5"></i>
+            <a href="mailto:nataliec2k5@gmail.com"> nataliec2k5@gmail.com </a>
+          </div>
+          <div>
+            <i class="fab fa-github w-3.5"></i>
+            <a href="https://github.com/ncashin/"> github </a>
+          </div>
+        </div>
       </div>
-      <p class="italic pt-6">What I'm Working On:</p>
-      <div class="pt-2 flex gap-4 flex-wrap">
-        <WorkItem
-          imgsrc="/public/adventofcodeleaderboard.png"
-          href="https://github.com/ncashin/aoc2024"
-          caption="Advent Of Code"
-        />
-        <WorkItem
-          imgsrc="/public/ncashin.mun.css.png"
-          href="https://www.cs.mun.ca/~ncashin"
-          caption="My MUN Site"
-        />
+
+      <div class="min-w-full sm:pl-[20%]">
+        <div class="flex flex-col gap-5 pl-4 border-l-black border-l-2">
+          <div>
+            <h2 class="text-2xl p-0 m-0">Currently Updating My Site</h2>
+            <p class="text-lg m-0">Check back soon for content heavily WIP</p>
+            <a href="https://c-core.ca">c-core.ca</a>
+          </div>
+        </div>
       </div>
     </div>
   </body>

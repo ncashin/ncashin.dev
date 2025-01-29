@@ -5,8 +5,8 @@
  */
 
 :root {
-  --accent: #0000ee;
-  --accent-dark: #000d8a;
+  --accent: #0000EE;
+  --accent-dark: #551A8B;
   --black: 15, 18, 25;
   --gray: 96, 115, 159;
   --gray-light: 229, 233, 240;
@@ -26,15 +26,19 @@ body {
   color: rgb(var(--gray-dark));
 }
 
+a {
+  color: var(--accent);
+}
+a:visited {
+  color: var(--accent-dark)
+}
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 h1 {
   font-family: "Mr Dafoe";
   font-size: 1.5rem;
 }
 
-a {
-  color: revert;
-}
-a:hover {
-  color: revert;
-  text-decoration: underline;
-}
