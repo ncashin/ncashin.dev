@@ -37,6 +37,12 @@ a:hover {
   cursor: pointer;
 }
 
+p {
+  font-size: 1rem;
+}
+h2 {
+  font-size: 1.2rem;
+}
 h1 {
   font-family: "Mr Dafoe";
   font-size: 1.5rem;
