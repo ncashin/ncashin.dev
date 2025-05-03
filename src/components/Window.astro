@@ -1,0 +1,19 @@
+---
+const { title, class: className, ...rest } = Astro.props;
+---
+
+<div class="win7 max-h-full" {...rest}>
+  <div class="window glass active max-h-full">
+    <div class="title-bar">
+      <div class="title-bar-text">{title}</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize"></button>
+        <button aria-label="Maximize"></button>
+        <button aria-label="Close"></button>
+      </div>
+    </div>
+    <div class="window-body max-h-full">
+      <slot />
+    </div>
+  </div>
+</div>

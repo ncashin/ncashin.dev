@@ -5,6 +5,9 @@ import ListItem from "../components/ListItem.astro";
 import WorkItem from "../components/WorkItem.astro";
 import "../styles/global.css";
 import "normalize.css";
+import DoodleHTML from "../components/doodle.html";
+import "7.css/dist/7.scoped.css";
+import Window from "../components/window.astro";
 ---
 
 <!doctype html>
@@ -25,41 +28,84 @@ import "normalize.css";
       referrerpolicy="no-referrer"
     />
 
+    <script src="https://esm.sh/css-doodle/css-doodle.min.js?raw"></script>
+
     <meta name="viewport" content="device-width, initial-scale=1" />
     <meta charset="utf-8" />
   </head>
-  <body>
-    <div class="w-screen h-screen sm:pl-[10%] sm:pr -[20%] px-[20%] py-20">
-      <div class="flex flex-col w-52 sm:fixed justify-center pl-30 pb-5">
-        <h1 class="text-4xl px-7 m-0 hover:drop-shadow-sm w-max">
-          Natalie Cashin
-        </h1>
-        <div class="flex flex-col pl-9 gap-0.5">
-          <div class="w-max">
-            <i class="fa-solid fa-envelope w-3.5"></i>
-            <a href="mailto:nataliec2k5@gmail.com"> nataliec2k5@gmail.com </a>
-          </div>
-          <div class="w-max">
-            <i class="fab fa-github w-3.5"></i>
-            <a href="https://github.com/ncashin/"> github </a>
-          </div>
-        </div>
-      </div>
 
-      <div class="min-w-full sm:pl-60">
-        <div class="flex flex-col gap-4 pl-4 sm:border-l-black sm:border-l-2">
-          <h2 class="drop-shadow-sm">Hi I'm Natalie</h2>
-          <p>
-            Over the summer and fall semester I was a junior fullstack software
-            developer working on various geospatial shenanigans at
-            <a href="https://c-core.ca/">c-core</a>
-          </p>
-          <p>
-            Otherwise I've been a student at
-            <a href="https://mun.ca/">MUN</a>
-            and working on various low-level graphics or gamdev hobbyist projects
-          </p>
+  <body>
+    <div class="flex flex-row w-screen h-screen overflow-clip">
+      <div class="flex flex-col p-5 gap-5 w-64 items-start h-screen">
+        <p>
+          Natalie is a professional linkedin-core scrum poster working in
+          Newfoundland ...and web developer I guess
+        </p>
+        <p>
+          I am currently trying to figure out how to <a
+            href="https://www.spellbook.legal/">spell book</a
+          > having a hard time but I'm pretty sure chatgpt may help :(
+        </p>
+        <p>
+          previously a professional satellite at <a href="https://www.c-core.ca"
+            >c-core</a
+          > summer 2024 through to the winter months <br />(it got cold up
+          there)
+        </p>
+        <div>
+          <h3 class="pb-1">Projects:</h3>
+          <div class="flex flex-col gap-1">
+            <a href="https://notmg.com" class="pl-1"> notmg </a>
+            <a href="https://notmg.com" class="pl-1">
+              vulkan shenanigans 💅 <br />(I want to return to)</a
+            >
+          </div>
         </div>
+        <div>
+          <div class="flex flex-col gap-1">
+            <h3 class="pb-1">Nat Posting:</h3>
+            <a href="https://notmg.com" class="pl-1"> Climb Time </a>
+            <a href="https://notmg.com" class="pl-1"> Odin vs. C++ </a>
+          </div>
+        </div>
+        <div>
+          <h3 class="pb-1">Socials:</h3>
+          <div class="flex flex-col gap-1 pl-1">
+            <div class="w-max flex h-max gap-1 items-center">
+              <i class="fa-solid fa-envelope w-3.5"></i>
+              <a href="mailto:nataliec2k5@gmail.com"> nataliec2k5@gmail.com </a>
+            </div>
+            <div class="w-max flex h-max gap-1 items-center">
+              <i class="fab fa-github w-3.5"></i>
+              <a href="https://github.com/ncashin/"> github </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-grow"></div>
+        <p>(ღ˘⌣˘)♥ ℒ♡ⓥℯ ㄚ♡ⓤ</p>
+      </div>
+      <div
+        class="flex-grow flex flex-row h-full overflow-clip bg-gray-100 p-5 gap-5 justify-center">
+        <Window title="blague">
+          <div class="overflow-scroll p-10 w-max h-[46rem]">
+            <h1>Blog Posting Soon</h1>
+            <h1>Blog Posting Soon</h1>
+            <h1>Blog Posting Soon</h1>
+            <h1>Blog Posting Soon</h1>
+            <h1>Blog Posting Soon</h1>
+            <h1>Blog Posting Soon</h1>
+            <h1>Blog Posting Soon</h1>
+            <h1>Blog Posting Soon</h1>
+            <h1>Blog Posting Soon</h1>
+          </div>
+        </Window>
+        <Window title="natalie.jpg">
+          <img src="/natalie.jpg" class="w-64" />
+        </Window>
+        <Window title="guestbook" class="w-min">
+          <iframe src="https://ncashin.atabook.org/" class="h-[48rem]"></iframe>
+        </Window>
       </div>
     </div>
   </body>
