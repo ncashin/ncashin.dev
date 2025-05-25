@@ -2,8 +2,8 @@
 const { title, class: className, ...rest } = Astro.props;
 ---
 
-<div class="win7 max-h-full" {...rest}>
-  <div class="window glass active max-h-full">
+<div class={"win7 w-min h-min " + className}>
+  <div class={"window glass active w-min h-min"}>
     <div class="title-bar">
       <div class="title-bar-text">{title}</div>
       <div class="title-bar-controls">
@@ -12,7 +12,7 @@ const { title, class: className, ...rest } = Astro.props;
         <button aria-label="Close"></button>
       </div>
     </div>
-    <div class="window-body max-h-full">
+    <div class="window-body">
       <slot />
     </div>
   </div>

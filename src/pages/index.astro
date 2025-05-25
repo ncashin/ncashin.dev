@@ -7,7 +7,7 @@ import "../styles/global.css";
 import "normalize.css";
 import DoodleHTML from "../components/doodle.html";
 import "7.css/dist/7.scoped.css";
-import Window from "../components/window.astro";
+import Window from "../components/Window.astro";
 ---
 
 <!doctype html>
@@ -36,7 +36,8 @@ import Window from "../components/window.astro";
 
   <body>
     <div class="flex flex-row w-screen h-screen overflow-clip">
-      <div class="flex flex-col p-5 gap-5 w-64 items-start h-screen">
+      <div
+        class="flex flex-col p-5 gap-5 w-64 items-start h-screen drop-shadow-xl bg-white border border-r-2">
         <p>
           Natalie is a professional linkedin-core scrum poster working in
           Newfoundland ...and web developer I guess
@@ -84,11 +85,13 @@ import Window from "../components/window.astro";
 
         <div class="flex-grow"></div>
         <p>(ღ˘⌣˘)♥ ℒ♡ⓥℯ ㄚ♡ⓤ</p>
+        <p>Made with 💖 by Natalie</p>
       </div>
+
       <div
-        class="flex-grow flex flex-row h-full overflow-clip bg-gray-100 p-5 gap-5 justify-center">
-        <Window title="blague">
-          <div class="overflow-scroll p-10 w-max h-[46rem]">
+        class="flex flex-row justify-around gap-8 p-8 w-full h-full bg-[url('/desktop.png')] bg-cover">
+        <Window title="blague" className="max-h-fit">
+          <div class="overflow-scroll p-4 max-h-[48rem] w-fit text-nowrap">
             <h1>Blog Posting Soon</h1>
             <h1>Blog Posting Soon</h1>
             <h1>Blog Posting Soon</h1>
@@ -103,7 +106,7 @@ import Window from "../components/window.astro";
         <Window title="natalie.jpg">
           <img src="/natalie.jpg" class="w-64" />
         </Window>
-        <Window title="guestbook" class="w-min">
+        <Window title="guestbook">
           <iframe src="https://ncashin.atabook.org/" class="h-[48rem]"></iframe>
         </Window>
       </div>
