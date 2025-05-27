@@ -1,13 +1,12 @@
 ---
-import HiImNat from "../components/HiImNat.astro";
-
-import ListItem from "../components/ListItem.astro";
-import WorkItem from "../components/WorkItem.astro";
 import "../styles/global.css";
 import "normalize.css";
-import DoodleHTML from "../components/doodle.html";
 import "7.css/dist/7.scoped.css";
 import Window from "../components/Window.astro";
+import { Image } from "astro:assets";
+import desktopImage from "../assets/desktop.png";
+import natalieImage from "../assets/natalie.jpg";
+import Blog from "../components/blog.astro";
 ---
 
 <!doctype html>
@@ -16,6 +15,9 @@ import Window from "../components/Window.astro";
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="/desktop.png" as="image" />
+    <link rel="preload" href="/natalie.jpg" as="image" />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Share+Tech+Mono"
       rel="stylesheet"
@@ -39,7 +41,7 @@ import Window from "../components/Window.astro";
       <div
         class="flex flex-col p-5 gap-5 w-64 items-start h-screen drop-shadow-xl bg-white border border-r-2">
         <p>
-          Natalie is a professional linkedin-core scrum poster working in
+          Natalie is a professional linkedin scrum poster working in
           Newfoundland ...and web developer I guess
         </p>
         <p>
@@ -84,27 +86,33 @@ import Window from "../components/Window.astro";
         </div>
 
         <div class="flex-grow"></div>
-        <p>(ღ˘⌣˘)♥ ℒ♡ⓥℯ ㄚ♡ⓤ</p>
-        <p>Made with 💖 by Natalie</p>
+        <div>
+          <p>Made with ℒ♡ⓥℯ</p>
+          <p>
+            by <span class="font-['Mr_Dafoe'] text-xl px-1">Natalie</span> 💖
+          </p>
+        </div>
       </div>
 
       <div
-        class="flex flex-row justify-around gap-8 p-8 w-full h-full bg-[url('/desktop.png')] bg-cover">
-        <Window title="blague" className="max-h-fit">
-          <div class="overflow-scroll p-4 max-h-[48rem] w-fit text-nowrap">
-            <h1>Blog Posting Soon</h1>
-            <h1>Blog Posting Soon</h1>
-            <h1>Blog Posting Soon</h1>
-            <h1>Blog Posting Soon</h1>
-            <h1>Blog Posting Soon</h1>
-            <h1>Blog Posting Soon</h1>
-            <h1>Blog Posting Soon</h1>
-            <h1>Blog Posting Soon</h1>
-            <h1>Blog Posting Soon</h1>
-          </div>
+        class="relative flex flex-row justify-around gap-8 p-8 w-full h-full">
+        <Image
+          src={desktopImage}
+          alt="Desktop background"
+          class="absolute inset-0 w-full h-full object-cover -z-10"
+        />
+        <Window title="blague" className="">
+          <Blog
+            title="Blog Posting Soon"
+            date={new Date()}
+            author="Natalie"
+            description="This is a description"
+            tags={["blog", "posting", "soon"]}
+          />
         </Window>
+
         <Window title="natalie.jpg">
-          <img src="/natalie.jpg" class="w-64" />
+          <Image src={natalieImage} alt="Natalie" width={288} height={288} />
         </Window>
         <Window title="guestbook">
           <iframe src="https://ncashin.atabook.org/" class="h-[48rem]"></iframe>
