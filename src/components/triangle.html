@@ -23,6 +23,7 @@
         float fade = 1. - smoothstep(0., maxRadius, dist);
         fade = pow(fade, 1.5);
         fade = fade < .1 ? 0.0 : fade;
+        
         vec2 pBackground = gl_FragCoord.xy / u_resolution.xy;
         
         FragColor = vec4(pBackground.yx + col.yx, 1., fade);
