@@ -12,37 +12,65 @@ import Blog from "../components/blog.astro";
 <!doctype html>
 <html lang="en">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/desktop.png" as="image" type="image/png" />
+    <link rel="preload" href="/natalie.jpg" as="image" type="image/jpeg" />
+
+    <!-- Preload fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="/desktop.png" as="image" />
-    <link rel="preload" href="/natalie.jpg" as="image" />
-
     <link
-      href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Share+Tech+Mono"
-      rel="stylesheet"
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Share+Tech+Mono&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Share+Tech+Mono&display=swap"
+      />
+    </noscript>
+
+    <!-- Preload Font Awesome -->
     <link
-      rel="stylesheet"
+      rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      />
+    </noscript>
 
-    <script src="https://esm.sh/css-doodle/css-doodle.min.js?raw"></script>
-
-    <meta name="viewport" content="device-width, initial-scale=1" />
-    <meta charset="utf-8" />
+    <!-- Preload CSS Doodle script -->
+    <link
+      rel="preload"
+      href="https://esm.sh/css-doodle/css-doodle.min.js?raw"
+      as="script"
+    />
   </head>
 
   <body>
     <div class="flex flex-row w-screen h-screen overflow-clip">
       <div
-        class="flex flex-col p-5 gap-5 w-64 items-start h-screen drop-shadow-xl bg-white border border-r-2">
+        class="flex flex-col p-5 gap-5 w-64 items-start h-screen drop-shadow-xl bg-white border border-r-2"
+      >
         <p>
-          Natalie is a professional linkedin scrum poster working in
-          Newfoundland ...and web developer I guess
+          Natalie is a professional geekbot ignorer and taco miner working in
+          Newfoundland ...and web developer too I guess
         </p>
         <p>
           I am currently trying to figure out how to <a
@@ -66,7 +94,10 @@ import Blog from "../components/blog.astro";
         </div>
         <div>
           <div class="flex flex-col gap-1">
-            <h3 class="pb-1">Nat Posting:</h3>
+            <h3 class="pb-1">
+              Nat Posting
+              <span class="pb-1 text-gray-500 text-sm"> (to do) </span>:
+            </h3>
             <a href="https://notmg.com" class="pl-1"> Climb Time </a>
             <a href="https://notmg.com" class="pl-1"> Odin vs. C++ </a>
           </div>
@@ -95,7 +126,8 @@ import Blog from "../components/blog.astro";
       </div>
 
       <div
-        class="relative flex flex-row justify-around gap-8 p-8 w-full h-full">
+        class="relative flex flex-row justify-around gap-8 p-8 w-full h-full"
+      >
         <Image
           src={desktopImage}
           alt="Desktop background"
@@ -119,5 +151,8 @@ import Blog from "../components/blog.astro";
         </Window>
       </div>
     </div>
+
+    <!-- Load CSS Doodle script after page content -->
+    <script src="https://esm.sh/css-doodle/css-doodle.min.js?raw"></script>
   </body>
 </html>
