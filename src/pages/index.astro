@@ -7,6 +7,7 @@ import { Image } from "astro:assets";
 import desktopImage from "../assets/desktop.png";
 import natalieImage from "../assets/natalie.jpg";
 import Blog from "../components/blog.astro";
+import Triangle from "../components/triangle.html";
 ---
 
 <!doctype html>
@@ -55,12 +56,9 @@ import Blog from "../components/blog.astro";
       />
     </noscript>
 
-    <!-- Preload CSS Doodle script -->
-    <link
-      rel="preload"
-      href="https://esm.sh/css-doodle/css-doodle.min.js?raw"
-      as="script"
-    />
+    <!-- CSS Doodle script -->
+    <script type="module" src="https://esm.sh/css-doodle/css-doodle.min.js?raw"
+    ></script>
   </head>
 
   <body>
@@ -116,6 +114,8 @@ import Blog from "../components/blog.astro";
           </div>
         </div>
 
+        <Triangle />
+
         <div class="flex-grow"></div>
         <div>
           <p>Made with ℒ♡ⓥℯ</p>
@@ -151,8 +151,5 @@ import Blog from "../components/blog.astro";
         </Window>
       </div>
     </div>
-
-    <!-- Load CSS Doodle script after page content -->
-    <script src="https://esm.sh/css-doodle/css-doodle.min.js?raw"></script>
   </body>
 </html>
