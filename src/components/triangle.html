@@ -18,8 +18,8 @@
 	    vec3 col = mix(vec3(0.), vec3(1.), 1. - smoothstep(0., ray,abs(tri)));
 
         vec2 pBackground = gl_FragCoord.xy / u_resolution.xy;
-
-        FragColor = vec4(pBackground.yx + col.yx, .8, 1.);
+        
+        FragColor = vec4(pBackground.yx + col.yx, 1., 1.);
     }
   );
 </css-doodle>
