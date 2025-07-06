@@ -3,10 +3,6 @@ import "../styles/global.css";
 import "normalize.css";
 import "7.css/dist/7.scoped.css";
 import Window from "../components/Window.astro";
-import { Image } from "astro:assets";
-import desktopImage from "../assets/desktop.png";
-import natalieImage from "../assets/natalie.jpg";
-import Blog from "../components/blog.astro";
 import Triangle from "../components/triangle.html";
 ---
 
@@ -127,14 +123,14 @@ import Triangle from "../components/triangle.html";
       <div
         class="relative flex flex-row justify-around gap-8 p-8 w-full h-full"
       >
-        <Image
-          src={desktopImage}
+        <img
+          src="/desktop.png"
           alt="Desktop background"
           class="absolute inset-0 w-full h-full object-cover -z-10"
         />
 
         <!-- <Window title="natalie.jpg">
-          <Image src={natalieImage} alt="Natalie" width={288} height={288} />
+          <img src="/natalie.jpg" alt="Natalie" width={288} height={288} />
         </Window> -->
         <Window title="guestbook">
           <iframe src="https://ncashin.atabook.org/" class="h-[48rem]"></iframe>
