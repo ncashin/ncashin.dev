@@ -4,7 +4,7 @@ const posts = Object.values(import.meta.glob("./posts/*.md", { eager: true }));
 
 // Get the current post slug from URL params (default to first post)
 const url = new URL(Astro.request.url);
-const currentSlug = url.searchParams.get("post") || "great-post";
+const currentSlug = url.searchParams.get("post");
 
 // Find the current post
 const currentPost =
@@ -23,51 +23,35 @@ const postSlugs = posts.map((post: any) => {
 });
 ---
 
-<div class="container">
-  <nav class="nav">
-    <div class="flex flex-col gap-3 w-full">
-      {
-        postSlugs.map((post) => (
-          <div
-            class={`transition-all duration-200 ${
-              currentSlug === post.slug
-                ? "bg-blue-50 border-blue-200 shadow-sm"
-                : "bg-white border-gray-200 hover:border-gray-300"
-            }`}
-          >
-            <a href={post.url} class="block no-underline">
-              <div class="result-title text-blue-600 font-medium text-lg mb-1 hover:text-blue-800">
-                {post.title}
-              </div>
-              <div class="text-green-700 text-sm font-mono mb-2 hover:">
-                {post.url}
-              </div>
-              <div class="text-gray-600 text-sm leading-relaxed">
-                {post.description || "Click to read this blog post"}
-              </div>
-            </a>
-          </div>
-        ))
-      }
-    </div>
-  </nav>
+<div class="overflow-y-scroll">
+  {
+    !currentPost && (
+      <nav class="p-4 px-5">
+        <div class="flex flex-col gap-3 w-full">
+          {postSlugs.map((post) => (
+            <div class={`transition-all duration-200`}>
+              <a href={post.url} class="block no-underline">
+                <div class="result-title text-blue-600 font-medium text-lg mb-1">
+                  {post.title}
+                </div>
+                <div class="text-green-700 text-sm font-mono mb-2 hover:">
+                  {post.url}
+                </div>
+                <div class="text-gray-600 text-sm leading-relaxed">
+                  {post.description || "Click to read this blog post"}
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      </nav>
+    )
+  }
   {
     currentPost && (
-      <main class="overflow-y-scroll">
-        <h1>{currentPost.frontmatter.title}</h1>
-        {currentPost.frontmatter.author && (
-          <p>
-            <em>By {currentPost.frontmatter.author}</em>
-          </p>
-        )}
-        {currentPost.frontmatter.pubDate && (
-          <p>
-            <small>{currentPost.frontmatter.pubDate}</small>
-          </p>
-        )}
-
+      <div class="overflow-y-auto max-h-screen px-6">
         <currentPost.Content />
-      </main>
+      </div>
     )
   }
 </div>
