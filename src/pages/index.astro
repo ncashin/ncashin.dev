@@ -4,6 +4,8 @@ import "normalize.css";
 import "7.css/dist/7.scoped.css";
 import Window from "../components/Window.astro";
 import Triangle from "../components/triangle.html";
+import Blog from "../components/blog.astro";
+import Post from "../components/post.astro";
 ---
 
 <!doctype html>
@@ -132,7 +134,9 @@ import Triangle from "../components/triangle.html";
           alt="Desktop background"
           class="absolute inset-0 w-full h-full object-cover -z-10"
         />
-
+        <Blog title="blague" date={new Date(123)} author="Natalie">
+          <Post />
+        </Blog>
         <!-- <Window title="natalie.jpg">
           <img src="/natalie.jpg" alt="Natalie" width={288} height={288} />
         </Window> -->

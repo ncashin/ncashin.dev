@@ -1,9 +1,17 @@
 ---
+title: "Sample Blog Post"
+description: "A guide to writing clean, readable code that makes you go 'wow' instead of 'why'"
+pubDate: "2024-01-15"
+updatedDate: "2024-01-15"
+heroImage: "/blog-placeholder-1.jpg"
+tags: ["programming", "clean-code", "typescript"]
+---
+
 # Sample Blog Post
 
 ## Introduction
 
-Hey there! 👋 Welcome to my little corner of the internet. Today we're diving into something *really* cool - the art of writing code that makes you go "wow" instead of "why".
+Hey there! 👋 Welcome to my little corner of the internet. Today we're diving into something _really_ cool - the art of writing code that makes you go "wow" instead of "why".
 
 ## The Problem
 
@@ -11,8 +19,8 @@ Hey there! 👋 Welcome to my little corner of the internet. Today we're diving 
 // Before: The "why" code
 function processData(data: any[]) {
   let result = [];
-  for(let i = 0; i < data.length; i++) {
-    if(data[i].active) {
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].active) {
       result.push(data[i].value);
     }
   }
@@ -24,9 +32,8 @@ function processData(data: any[]) {
 
 ```typescript
 // After: The "wow" code
-const processData = (data: Data[]) => 
-  data.filter(item => item.active)
-      .map(item => item.value);
+const processData = (data: Data[]) =>
+  data.filter((item) => item.active).map((item) => item.value);
 ```
 
 > **Pro Tip**: Clean code is like a good joke - it needs no explanation.
