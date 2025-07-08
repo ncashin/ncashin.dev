@@ -1,7 +1,7 @@
 FROM node:23-alpine AS base
 WORKDIR /app
 
-COPY ./package.json ./package-lock.json ./
+COPY ./package.json ./package-lock.json .
 
 FROM base AS prod-deps
 RUN npm install --omit=dev
