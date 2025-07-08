@@ -21,3 +21,43 @@ a:hover {
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
 }
+
+/* Enhanced View Transitions */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth transitions for interactive elements */
+a, button, [role="button"] {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Enhanced hover effects with transitions */
+a:hover {
+  transform: translateY(-1px);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Custom transition for images */
+img {
+  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+img:hover {
+  transform: scale(1.02);
+  filter: brightness(1.05);
+}
+
+/* Smooth transitions for cards and containers */
+.card, .container, .window {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Enhanced focus states */
+a:focus, button:focus, [role="button"]:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  transition: outline 0.2s ease-in-out;
+}

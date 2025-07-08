@@ -1,12 +1,9 @@
 ---
-// Get all posts
 const posts = Object.values(import.meta.glob("./posts/*.md", { eager: true }));
 
-// Get the current post slug from URL params (default to first post)
 const url = new URL(Astro.request.url);
 const currentSlug = url.searchParams.get("post");
 
-// Find the current post
 const currentPost =
   posts.find((post: any) => {
     const postSlug = post.file.split("/").pop()?.replace(".md", "");
@@ -18,40 +15,34 @@ const postSlugs = posts.map((post: any) => {
   return {
     slug,
     title: post.frontmatter.title,
-    url: `?post=${slug}`,
+    url: `/posts/${slug}`,
   };
 });
 ---
 
-<div class="overflow-y-scroll">
-  {
-    !currentPost && (
-      <nav class="p-4 px-5">
-        <div class="flex flex-col gap-3 w-full">
-          {postSlugs.map((post) => (
-            <div class={`transition-all duration-200`}>
-              <a href={post.url} class="block no-underline">
-                <div class="result-title text-blue-600 font-medium text-lg mb-1">
-                  {post.title}
-                </div>
-                <div class="text-green-700 text-sm font-mono mb-2 hover:">
-                  {post.url}
-                </div>
-                <div class="text-gray-600 text-sm leading-relaxed">
-                  {post.description || "Click to read this blog post"}
-                </div>
-              </a>
-            </div>
-          ))}
-        </div>
-      </nav>
-    )
-  }
-  {
-    currentPost && (
-      <div class="overflow-y-auto max-h-screen px-6">
-        <currentPost.Content />
-      </div>
-    )
-  }
+<div class="overflow-y-scroll" style="view-transition-name: post-container">
+  <nav class="p-4 px-5" style="view-transition-name: post-nav">
+    <div class="flex flex-col gap-3 w-full">
+      {
+        postSlugs.map((post) => (
+          <div
+            class={`transition-all duration-200`}
+            style="view-transition-name: post-item-{post.slug}"
+          >
+            <a href={post.url} class="block no-underline">
+              <div class="result-title text-blue-600 font-medium text-lg mb-1">
+                {post.title}
+              </div>
+              <div class="text-green-700 text-sm font-mono mb-2 hover:">
+                {post.url}
+              </div>
+              <div class="text-gray-600 text-sm leading-relaxed">
+                {post.description || "Click to read this blog post"}
+              </div>
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </nav>
 </div>

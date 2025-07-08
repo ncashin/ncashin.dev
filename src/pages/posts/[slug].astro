@@ -1,0 +1,30 @@
+---
+import "../../styles/global.css";
+import "normalize.css";
+import "7.css/dist/7.scoped.css";
+import Window from "../../components/Window.astro";
+import Triangle from "../../components/triangle.html";
+import Blog from "../../components/Blog.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// Get all posts
+const posts = Object.values(
+  import.meta.glob("../../components/posts/*.md", { eager: true })
+);
+
+const { slug } = Astro.params;
+
+const currentPost = posts.find((post: any) => {
+  const postSlug = post.file.split("/").pop()?.replace(".md", "");
+  return postSlug === slug;
+}) as any;
+
+if (!currentPost) {
+  return Astro.redirect("/");
+}
+const { frontmatter } = currentPost;
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.description}>
+  <currentPost.Content />
+</BaseLayout>

@@ -75,55 +75,61 @@ const formattedDate = date.toLocaleDateString("en-US", {
         >
           <div class="text-5xl drop-shadow-lg">🌐</div>
           <div class="flex-1">
-            <h1 class="text-3xl font-bold m-0 mb-1 drop-shadow-lg">{title}</h1>
-            <div class="text-sm opacity-90">ncashin.dev • {formattedDate}</div>
+            <h1 class="text-3xl font-bold m-0 mb-1 drop-shadow-lg">
+              {title}
+            </h1>
+            <div class="text-sm opacity-90">
+              ncashin.dev • {formattedDate}
+            </div>
           </div>
         </header>
 
         <!-- Post Content -->
         <div class="content">
-          <slot />
+          <div class="overflow-y-auto max-h-screen px-6">
+            <slot />
+          </div>
         </div>
       </article>
     </div>
-
-    <style>
-      .content :global(h2) {
-        @apply text-2xl my-8 mb-4 text-gray-800 border-b-2 border-blue-500 pb-2;
-      }
-
-      .content :global(p) {
-        @apply my-4 text-base;
-      }
-
-      .content :global(code) {
-        @apply px-1.5 py-0.5 rounded text-sm;
-      }
-
-      .content :global(pre) {
-        @apply p-4 rounded-lg overflow-x-auto my-4;
-      }
-
-      .content :global(blockquote) {
-        @apply border-l-4 border-blue-500 pl-4 my-4 text-gray-600 italic   py-3 px-4 rounded-r-lg;
-      }
-
-      .content :global(ul),
-      .content :global(ol) {
-        @apply my-4 pl-8;
-      }
-
-      .content :global(li) {
-        @apply my-2;
-      }
-
-      .content :global(a) {
-        @apply text-blue-500 no-underline border-b border-transparent transition-all duration-200;
-      }
-
-      .content :global(a:hover) {
-        @apply border-blue-500 text-blue-700;
-      }
-    </style>
   </div>
+
+  <style>
+    .content :global(h2) {
+      @apply text-2xl my-8 mb-4 text-gray-800 border-b-2 border-blue-500 pb-2;
+    }
+
+    .content :global(p) {
+      @apply my-4 text-base;
+    }
+
+    .content :global(code) {
+      @apply px-1.5 py-0.5 rounded text-sm;
+    }
+
+    .content :global(pre) {
+      @apply p-4 rounded-lg overflow-x-auto my-4;
+    }
+
+    .content :global(blockquote) {
+      @apply border-l-4 border-blue-500 pl-4 my-4 text-gray-600 italic   py-3 px-4 rounded-r-lg;
+    }
+
+    .content :global(ul),
+    .content :global(ol) {
+      @apply my-4 pl-8;
+    }
+
+    .content :global(li) {
+      @apply my-2;
+    }
+
+    .content :global(a) {
+      @apply text-blue-500 no-underline border-b border-transparent transition-all duration-200;
+    }
+
+    .content :global(a:hover) {
+      @apply border-blue-500 text-blue-700;
+    }
+  </style>
 </div>
