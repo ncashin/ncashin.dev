@@ -1,15 +1,6 @@
 ---
 const posts = Object.values(import.meta.glob("./posts/*.md", { eager: true }));
 
-const url = new URL(Astro.request.url);
-const currentSlug = url.searchParams.get("post");
-
-const currentPost =
-  posts.find((post: any) => {
-    const postSlug = post.file.split("/").pop()?.replace(".md", "");
-    return postSlug === currentSlug;
-  }) || undefined;
-
 const postSlugs = posts.map((post: any) => {
   const slug = post.file.split("/").pop()?.replace(".md", "");
   return {
