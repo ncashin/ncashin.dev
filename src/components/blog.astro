@@ -97,15 +97,15 @@ const formattedDate = date.toLocaleDateString("en-US", {
       }
 
       .content :global(code) {
-        @apply bg-gray-50 px-1.5 py-0.5 rounded text-sm border border-gray-200;
+        @apply px-1.5 py-0.5 rounded text-sm;
       }
 
       .content :global(pre) {
-        @apply bg-gray-50 p-4 rounded-lg overflow-x-auto my-4 border border-gray-200;
+        @apply p-4 rounded-lg overflow-x-auto my-4;
       }
 
       .content :global(blockquote) {
-        @apply border-l-4 border-blue-500 pl-4 my-4 text-gray-600 italic bg-gray-50 py-3 px-4 rounded-r-lg;
+        @apply border-l-4 border-blue-500 pl-4 my-4 text-gray-600 italic   py-3 px-4 rounded-r-lg;
       }
 
       .content :global(ul),
@@ -123,25 +123,6 @@ const formattedDate = date.toLocaleDateString("en-US", {
 
       .content :global(a:hover) {
         @apply border-blue-500 text-blue-700;
-      }
-
-      /* Responsive Design */
-      @media (max-width: 768px) {
-        .site-header {
-          @apply flex-col text-center;
-        }
-
-        .site-actions {
-          @apply mt-3;
-        }
-
-        .footer-links {
-          @apply flex-col gap-2;
-        }
-
-        .site-footer {
-          @apply flex-col gap-3 text-center;
-        }
       }
     </style>
   </div>
