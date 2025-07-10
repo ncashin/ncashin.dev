@@ -11,9 +11,9 @@ const { title } = Astro.props;
 
 <div class="flex justify-center items-center w-full h-full p-4">
   <div
-    class="w-full h-full bg-white rounded-xl shadow-xl overflow-hidden font-sans"
+    class="w-full h-full bg-white rounded-xl shadow-xl max-h-full flex flex-col font-sans"
   >
-    <div class="bg-gray-200 border-b border-gray-400 pl-3 pb-2 pt-2.5">
+    <div class="border-b border-gray-400 pl-3 pb-2 pt-2.5">
       <div class="flex gap-2">
         <div class="w-3 h-3 rounded-full border border-black/10 bg-red-500">
         </div>
@@ -26,28 +26,55 @@ const { title } = Astro.props;
     </div>
 
     <!-- Browser Content -->
-    <div class="p-0">
-      <article class="max-w-none m-0 p-0 font-sans">
-        <header
-          class="bg-gradient-to-br from-blue-500 to-purple-600 text-white p-6 flex items-center gap-4"
-        >
-          <div class="text-5xl drop-shadow-lg">🌐</div>
-          <div class="flex-1">
-            <h1 class="text-3xl font-bold m-0 mb-1 drop-shadow-lg">
-              {title}
-            </h1>
-            <div class="text-sm opacity-90">ncashin.dev • 1 January 1970</div>
-          </div>
-        </header>
-
+    <header
+      class="bg-gradient-to-br from-blue-500 to-purple-600 text-white p-6 flex items-center gap-4"
+    >
+      <div class="text-5xl drop-shadow-lg">🌐</div>
+      <div class="flex-1">
+        <h1 class="text-3xl font-bold m-0 mb-1 drop-shadow-lg">
+          {title}
+        </h1>
+        <div class="text-sm opacity-90">
+          ncashin.dev • Last Post: 1 January 1970
+        </div>
+      </div>
+    </header>
+    <div class="p-0 overflow-scroll flex-grow custom-scrollbar">
+      <article class="m-0 p-0 font-sans max-h-full pb">
         <!-- Post Content -->
         <div class="content">
-          <div class="overflow-y-scroll px-6">
+          <div class="max-h-full px-6 pb-10">
             <slot />
           </div>
         </div>
       </article>
     </div>
+    <style>
+      .custom-scrollbar {
+        scrollbar-width: thin;
+        scrollbar-color: #a0aec0 #f3f4f6;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 12px;
+        background: transparent;
+        border-radius: 8px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #a0aec0;
+        border-radius: 8px;
+        border: 2px solid #f3f4f6;
+        min-height: 40px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #718096;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f3f4f6;
+        border-radius: 8px;
+        border: 1px solid #e5e7eb;
+        margin: 2px;
+      }
+    </style>
   </div>
 
   <style>

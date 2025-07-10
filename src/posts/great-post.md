@@ -1,7 +1,7 @@
 ---
 title: "The greatest post of all time"
-author: "Ben"
-description: "A guide to writing clean, readable code that makes you go 'wow' instead of 'why'"
+author: "Natalie"
+description: "Yippie I have a blague"
 ---
 
 Here is my _great_ post!
