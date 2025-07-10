@@ -4,7 +4,7 @@ author: "Natalie"
 description: "I have sharded my consciousness and ascended to the cloud"
 ---
 
-# MongoDB: Detroit Become Webscale
+# MongoDB - Detroit Become Webscale
 
 ## Disclaimer
 
