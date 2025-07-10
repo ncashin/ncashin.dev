@@ -1,15 +1,16 @@
-FROM node:23-alpine AS base
+FROM node:20-alpine AS base
 WORKDIR /app
 
-COPY ./package.json ./package-lock.json .
+COPY ./package.json ./package-lock.json ./
 
 FROM base AS prod-deps
-RUN npm install --omit=dev
+RUN npm ci --omit=dev
 
 FROM base AS build-deps
-RUN npm install
+RUN npm ci
 
 FROM build-deps AS build
+# Copy all source files before building
 COPY . .
 RUN npm run build
 
