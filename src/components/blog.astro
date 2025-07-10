@@ -1,18 +1,12 @@
 ---
 interface Props {
   title: string;
-  date: Date;
   author: string;
   description?: string;
   tags?: string[];
 }
 
-const { title, date } = Astro.props;
-const formattedDate = date.toLocaleDateString("en-US", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-});
+const { title } = Astro.props;
 ---
 
 <div class="flex justify-center items-center w-full h-full p-4">
@@ -78,9 +72,7 @@ const formattedDate = date.toLocaleDateString("en-US", {
             <h1 class="text-3xl font-bold m-0 mb-1 drop-shadow-lg">
               {title}
             </h1>
-            <div class="text-sm opacity-90">
-              ncashin.dev • {formattedDate}
-            </div>
+            <div class="text-sm opacity-90">ncashin.dev • 1 January 1970</div>
           </div>
         </header>
 
