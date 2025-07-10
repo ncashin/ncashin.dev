@@ -22,14 +22,14 @@ const postSlugs = posts.map((post: any) => {
             style="view-transition-name: post-item-{post.slug}"
           >
             <a href={post.url} class="block no-underline">
-              <div class="result-title text-blue-600 font-medium text-lg mb-1">
+              <div class="result-title text-blue-600 font-medium text-lg">
                 {post.title}
-              </div>
-              <div class="text-green-700 text-sm font-mono mb-2 hover:">
-                {post.url}
               </div>
               <div class="text-gray-600 text-sm leading-relaxed">
                 {post.description || "Click to read this blog post"}
+              </div>
+              <div class="text-green-700 text-sm font-mono hover:">
+                {post.url}
               </div>
             </a>
           </div>
