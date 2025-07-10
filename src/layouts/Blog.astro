@@ -9,110 +9,435 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<div class="flex justify-center items-center w-full h-full p-4">
+<div
+  class="flex justify-center items-center w-full h-full p-4 bg-gradient-to-br"
+>
   <div
-    class="w-full h-full bg-white rounded-xl shadow-xl max-h-full flex flex-col font-sans"
+    class="w-full h-full bg-white rounded-md shadow-2xl max-h-full flex flex-col font-sans overflow-hidden border border-gray-300 safari-window"
   >
-    <div class="border-b border-gray-400 pl-3 pb-2 pt-2.5">
+    <!-- Safari-style Window Controls -->
+    <div
+      class="bg-gradient-to-b from-gray-200 to-gray-300 border-b border-gray-400 px-4 py-3 flex items-center justify-between"
+    >
       <div class="flex gap-2">
-        <div class="w-3 h-3 rounded-full border border-black/10 bg-red-500">
+        <div
+          class="w-3 h-3 rounded-full bg-red-500 shadow-inner border border-red-600 hover:bg-red-400 transition-colors cursor-pointer safari-button"
+        >
         </div>
-        <div class="w-3 h-3 rounded-full border border-black/10 bg-yellow-500">
+        <div
+          class="w-3 h-3 rounded-full bg-yellow-500 shadow-inner border border-yellow-600 hover:bg-yellow-400 transition-colors cursor-pointer safari-button"
+        >
         </div>
-        <div class="w-3 h-3 rounded-full border border-black/10 bg-green-500">
+        <div
+          class="w-3 h-3 rounded-full bg-green-500 shadow-inner border border-green-600 hover:bg-green-400 transition-colors cursor-pointer safari-button"
+        >
         </div>
       </div>
-      <div class="flex gap-0.5"></div>
+      <div class="flex-1 mx-4">
+        <div
+          class="bg-white rounded-lg px-4 py-2 border border-gray-400 shadow-inner flex items-center gap-2 safari-address-bar"
+        >
+          <div class="text-gray-500 text-sm">🔒</div>
+          <div class="text-sm text-gray-700 font-medium truncate">
+            ncashin.dev
+          </div>
+          <div class="text-gray-400 text-xs">•</div>
+          <div class="text-xs text-gray-500">Last Post: 1 January 1970</div>
+        </div>
+      </div>
+      <div class="flex gap-1">
+        <div
+          class="w-6 h-6 rounded bg-gray-200 hover:bg-gray-300 transition-colors cursor-pointer flex items-center justify-center text-xs text-gray-600 safari-nav-button"
+        >
+          ‹
+        </div>
+        <div
+          class="w-6 h-6 rounded bg-gray-200 hover:bg-gray-300 transition-colors cursor-pointer flex items-center justify-center text-xs text-gray-600 safari-nav-button"
+        >
+          ›
+        </div>
+        <div
+          class="w-6 h-6 rounded bg-gray-200 hover:bg-gray-300 transition-colors cursor-pointer flex items-center justify-center text-xs text-gray-600 safari-nav-button"
+        >
+          ⟳
+        </div>
+      </div>
     </div>
 
-    <!-- Browser Content -->
-    <header
-      class="bg-gradient-to-br from-blue-500 to-purple-600 text-white p-6 flex items-center gap-4"
-    >
-      <div class="text-5xl drop-shadow-lg">🌐</div>
-      <div class="flex-1">
-        <h1 class="text-3xl font-bold m-0 mb-1 drop-shadow-lg">
-          {title}
-        </h1>
-        <div class="text-sm opacity-90">
-          ncashin.dev • Last Post: 1 January 1970
-        </div>
-      </div>
-    </header>
-    <div class="p-0 overflow-scroll flex-grow custom-scrollbar">
-      <article class="m-0 p-0 font-sans max-h-full pb">
+    <!-- Content Area -->
+    <div class="p-0 overflow-auto flex-grow safari-scrollbar">
+      <article class="m-0 p-0 font-sans max-h-full">
         <!-- Post Content -->
         <div class="content">
-          <div class="max-h-full px-6 pb-10">
+          <div class="max-h-full">
             <slot />
           </div>
         </div>
       </article>
     </div>
+
     <style>
-      .custom-scrollbar {
+      /* Safari window effects */
+      .safari-window {
+        box-shadow:
+          0 20px 40px rgba(0, 0, 0, 0.1),
+          0 10px 20px rgba(0, 0, 0, 0.05),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      }
+
+      .safari-button {
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      }
+
+      .safari-address-bar {
+        box-shadow:
+          inset 0 2px 4px rgba(0, 0, 0, 0.1),
+          0 1px 0 rgba(255, 255, 255, 0.8);
+      }
+
+      .safari-nav-button {
+        box-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      }
+
+      .safari-nav-button:hover {
+        box-shadow:
+          0 2px 6px rgba(0, 0, 0, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      }
+
+      .safari-header {
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      }
+
+      /* Safari-style scrollbar */
+      .safari-scrollbar {
         scrollbar-width: thin;
-        scrollbar-color: #a0aec0 #f3f4f6;
+        scrollbar-color: #c1c1c1 transparent;
       }
-      .custom-scrollbar::-webkit-scrollbar {
-        width: 12px;
+
+      .safari-scrollbar::-webkit-scrollbar {
+        width: 8px;
         background: transparent;
-        border-radius: 8px;
       }
-      .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: #a0aec0;
-        border-radius: 8px;
-        border: 2px solid #f3f4f6;
-        min-height: 40px;
+
+      .safari-scrollbar::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 4px;
+        border: 1px solid #f0f0f0;
       }
-      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-        background: #718096;
+
+      .safari-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #a8a8a8;
       }
-      .custom-scrollbar::-webkit-scrollbar-track {
-        background: #f3f4f6;
-        border-radius: 8px;
-        border: 1px solid #e5e7eb;
-        margin: 2px;
+
+      .safari-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      /* Enhanced typography */
+      .content {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      /* Comprehensive Markdown Styling */
+      .content :global(h1) {
+        @apply text-4xl font-bold text-gray-900 mb-6 mt-8 pb-2 border-b-2 border-blue-500;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+      }
+
+      .content :global(h2) {
+        @apply text-3xl font-semibold text-gray-800 mb-4 mt-8 pb-2 border-b border-gray-300;
+        font-weight: 600;
+        letter-spacing: -0.025em;
+      }
+
+      .content :global(h3) {
+        @apply text-2xl font-semibold text-gray-800 mb-3 mt-6;
+        font-weight: 600;
+      }
+
+      .content :global(h4) {
+        @apply text-xl font-semibold text-gray-800 mb-3 mt-6;
+        font-weight: 600;
+      }
+
+      .content :global(h5) {
+        @apply text-lg font-semibold text-gray-800 mb-2 mt-4;
+        font-weight: 600;
+      }
+
+      .content :global(h6) {
+        @apply text-base font-semibold text-gray-800 mb-2 mt-4;
+        font-weight: 600;
+      }
+
+      .content :global(p) {
+        @apply my-4 text-base leading-relaxed text-gray-700;
+        line-height: 1.7;
+      }
+
+      .content :global(strong) {
+        @apply font-semibold text-gray-900;
+        font-weight: 600;
+      }
+
+      .content :global(em) {
+        @apply italic text-gray-800;
+        font-style: italic;
+      }
+
+      .content :global(code) {
+        @apply px-2 py-1 rounded-md text-sm font-mono bg-gray-100 text-gray-800 border border-gray-200;
+        font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas,
+          "Courier New", monospace;
+      }
+
+      .content :global(pre) {
+        @apply p-4 rounded-lg overflow-x-auto my-6 bg-gray-900 text-gray-100 border border-gray-700 shadow-lg;
+        font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas,
+          "Courier New", monospace;
+        line-height: 1.5;
+      }
+
+      .content :global(pre code) {
+        @apply bg-transparent border-none text-gray-100 p-0;
+      }
+
+      .content :global(blockquote) {
+        @apply border-l-4 border-blue-500 pl-6 my-6 text-gray-600 italic bg-blue-50 py-4 px-6 rounded-r-lg;
+        font-style: italic;
+        line-height: 1.6;
+      }
+
+      .content :global(ul) {
+        @apply my-4 pl-8 space-y-2;
+      }
+
+      .content :global(ol) {
+        @apply my-4 pl-8 space-y-2;
+      }
+
+      .content :global(li) {
+        @apply text-gray-700 leading-relaxed;
+        line-height: 1.6;
+      }
+
+      .content :global(ul li) {
+        @apply list-disc;
+      }
+
+      .content :global(ol li) {
+        @apply list-decimal;
+      }
+
+      .content :global(ul ul),
+      .content :global(ol ol),
+      .content :global(ul ol),
+      .content :global(ol ul) {
+        @apply mt-2 mb-2;
+      }
+
+      .content :global(a) {
+        @apply text-blue-600 no-underline border-b border-transparent transition-all duration-200 hover:border-blue-600 hover:text-blue-800;
+        text-decoration: none;
+      }
+
+      .content :global(a:visited) {
+        @apply text-purple-600;
+      }
+
+      .content :global(a:hover) {
+        @apply text-blue-800;
+        text-decoration: underline;
+      }
+
+      .content :global(a:active) {
+        @apply text-red-600;
+      }
+
+      /* Tables */
+      .content :global(table) {
+        @apply w-full border-collapse border border-gray-300 my-6 rounded-lg overflow-hidden shadow-sm;
+        font-size: 0.9em;
+      }
+
+      .content :global(th) {
+        @apply bg-gray-100 border border-gray-300 px-4 py-3 text-left font-semibold text-gray-800;
+        font-weight: 600;
+      }
+
+      .content :global(td) {
+        @apply border border-gray-300 px-4 py-3 text-gray-700;
+        vertical-align: top;
+      }
+
+      .content :global(tr:nth-child(even)) {
+        @apply bg-gray-50;
+      }
+
+      .content :global(tr:hover) {
+        @apply bg-blue-50;
+        transition: background-color 0.2s ease;
+      }
+
+      /* Images */
+      .content :global(img) {
+        @apply max-w-full h-auto rounded-lg shadow-md my-6 border border-gray-200;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .content :global(img:hover) {
+        transform: scale(1.02);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Horizontal Rule */
+      .content :global(hr) {
+        @apply my-8 border-t-2 border-gray-300;
+        border: none;
+        height: 2px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          #d1d5db,
+          transparent
+        );
+      }
+
+      /* Definition Lists */
+      .content :global(dl) {
+        @apply my-4;
+      }
+
+      .content :global(dt) {
+        @apply font-semibold text-gray-800 mt-4;
+        font-weight: 600;
+      }
+
+      .content :global(dd) {
+        @apply ml-4 mt-1 text-gray-700;
+        line-height: 1.6;
+      }
+
+      /* Keyboard and Sample */
+      .content :global(kbd) {
+        @apply px-2 py-1 text-xs font-mono bg-gray-100 border border-gray-300 rounded shadow-sm;
+        font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas,
+          "Courier New", monospace;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .content :global(samp) {
+        @apply font-mono text-gray-800 bg-gray-100 px-1 rounded;
+        font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas,
+          "Courier New", monospace;
+      }
+
+      /* Mark and Del */
+      .content :global(mark) {
+        @apply bg-yellow-200 px-1 rounded;
+        background: linear-gradient(120deg, #fef3c7 0%, #fde68a 100%);
+      }
+
+      .content :global(del) {
+        @apply line-through text-gray-500;
+        text-decoration: line-through;
+      }
+
+      .content :global(ins) {
+        @apply underline text-green-700;
+        text-decoration: underline;
+      }
+
+      /* Small and Sub/Sup */
+      .content :global(small) {
+        @apply text-sm text-gray-600;
+        font-size: 0.875em;
+      }
+
+      .content :global(sub) {
+        @apply text-xs;
+        font-size: 0.75em;
+        vertical-align: sub;
+      }
+
+      .content :global(sup) {
+        @apply text-xs;
+        font-size: 0.75em;
+        vertical-align: super;
+      }
+
+      /* Code blocks with syntax highlighting support */
+      .content :global(pre[class*="language-"]) {
+        @apply relative;
+      }
+
+      .content :global(pre[class*="language-"]::before) {
+        @apply absolute top-2 right-2 text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded;
+        content: attr(class);
+        font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas,
+          "Courier New", monospace;
+      }
+
+      /* Enhanced focus states for accessibility */
+      .content :global(a:focus),
+      .content :global(button:focus),
+      .content :global([role="button"]:focus) {
+        outline: 2px solid #3b82f6;
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .content :global(h1) {
+          @apply text-3xl;
+        }
+
+        .content :global(h2) {
+          @apply text-2xl;
+        }
+
+        .content :global(h3) {
+          @apply text-xl;
+        }
+
+        .content :global(pre) {
+          @apply p-3 text-sm;
+        }
+
+        .content :global(table) {
+          @apply text-sm;
+        }
+
+        .content :global(blockquote) {
+          @apply pl-4 px-4;
+        }
+      }
+
+      /* Print styles */
+      @media print {
+        .safari-window {
+          box-shadow: none;
+          border: 1px solid #ccc;
+        }
+
+        .content :global(pre) {
+          @apply bg-gray-100 text-gray-900 border border-gray-300;
+        }
+
+        .content :global(code) {
+          @apply bg-gray-100 text-gray-900 border border-gray-300;
+        }
       }
     </style>
   </div>
-
-  <style>
-    .content :global(h2) {
-      @apply text-2xl my-8 mb-4 text-gray-800 border-b-2 border-blue-500 pb-2;
-    }
-
-    .content :global(p) {
-      @apply my-4 text-base;
-    }
-
-    .content :global(code) {
-      @apply px-1.5 py-0.5 rounded text-sm;
-    }
-
-    .content :global(pre) {
-      @apply p-4 rounded-lg overflow-x-auto my-4;
-    }
-
-    .content :global(blockquote) {
-      @apply border-l-4 border-blue-500 pl-4 my-4 text-gray-600 italic   py-3 px-4 rounded-r-lg;
-    }
-
-    .content :global(ul),
-    .content :global(ol) {
-      @apply my-4 pl-8;
-    }
-
-    .content :global(li) {
-      @apply my-2;
-    }
-
-    .content :global(a) {
-      @apply text-blue-500 no-underline border-b border-transparent transition-all duration-200;
-    }
-
-    .content :global(a:hover) {
-      @apply border-blue-500 text-blue-700;
-    }
-  </style>
 </div>
