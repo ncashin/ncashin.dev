@@ -6,7 +6,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 // Get all posts
 const posts = Object.values(
-  import.meta.glob("../../components/posts/*.md", { eager: true })
+  import.meta.glob("../../posts/*.md", { eager: true })
 );
 
 const { slug } = Astro.params;

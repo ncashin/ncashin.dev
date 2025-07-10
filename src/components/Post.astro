@@ -1,5 +1,5 @@
 ---
-const posts = Object.values(import.meta.glob("./posts/*.md", { eager: true }));
+const posts = Object.values(import.meta.glob("../posts/*.md", { eager: true }));
 
 const postSlugs = posts.map((post: any) => {
   const slug = post.file.split("/").pop()?.replace(".md", "");
