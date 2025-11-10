@@ -35,11 +35,12 @@ const { title } = Astro.props;
 <style>
   /* Minimalistic typography */
   .content {
-    font-family: "Georgia", "Times New Roman", serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, sans-serif;
     line-height: 1.6;
-    color: #2c3e50;
+    color: var(--color-text);
     padding: 1.5rem;
-    background: #ffffff;
+    background: var(--color-background);
     position: relative;
   }
 
@@ -50,14 +51,7 @@ const { title } = Astro.props;
     right: 0;
     width: 100px;
     height: 100px;
-    background: linear-gradient(
-      45deg,
-      rgba(255, 182, 193, 0.1) 0%,
-      rgba(173, 216, 230, 0.1) 25%,
-      rgba(255, 218, 185, 0.1) 50%,
-      rgba(221, 160, 221, 0.1) 75%,
-      rgba(176, 224, 230, 0.1) 100%
-    );
+    background: var(--color-accent);
     border-radius: 50% 0 0 0;
     pointer-events: none;
     z-index: 0;
@@ -72,45 +66,42 @@ const { title } = Astro.props;
   .content :global(h1) {
     font-size: 2rem;
     font-weight: 700;
-    color: #2c3e50;
+    color: var(--color-text);
     margin: 1.5rem 0 1rem 0;
   }
 
   .content :global(h2) {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #2d3748;
+    color: var(--color-text);
     margin: 1.25rem 0 0.75rem 0;
   }
 
   .content :global(h3) {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #4a5568;
+    color: var(--color-text);
     margin: 1rem 0 0.5rem 0;
   }
 
   .content :global(h4) {
-    font-family: "Palatino", "Georgia", serif;
     font-size: 1.25rem;
     font-weight: 600;
-    color: #4a5568;
+    color: var(--color-text);
     margin: 1.25rem 0 0.5rem 0;
   }
 
   .content :global(h5) {
-    font-family: "Palatino", "Georgia", serif;
     font-size: 1.1rem;
     font-weight: 600;
-    color: #4a5568;
+    color: var(--color-text);
     margin: 1rem 0 0.5rem 0;
   }
 
   .content :global(h6) {
-    font-family: "Palatino", "Georgia", serif;
     font-size: 1rem;
     font-weight: 600;
-    color: #4a5568;
+    color: var(--color-text);
     margin: 1rem 0 0.5rem 0;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -119,7 +110,7 @@ const { title } = Astro.props;
   /* Minimalistic paragraph styling */
   .content :global(p) {
     margin: 1rem 0;
-    color: #2c3e50;
+    color: var(--color-text);
     font-size: 1rem;
     line-height: 1.6;
   }
@@ -136,7 +127,7 @@ const { title } = Astro.props;
   /* Minimalistic code styling */
   .content :global(code) {
     font-family: "Courier New", monospace;
-    background: #f8f9fa;
+    background: var(--color-accent);
     padding: 0.2rem 0.4rem;
     border-radius: 3px;
     font-size: 0.9rem;
@@ -145,7 +136,7 @@ const { title } = Astro.props;
   /* Minimalistic code blocks */
   .content :global(pre) {
     font-family: "Courier New", monospace;
-    background: #f8f9fa;
+    background: var(--color-accent);
     padding: 1rem;
     border-radius: 4px;
     margin: 1rem 0;
@@ -166,12 +157,9 @@ const { title } = Astro.props;
     font-style: italic;
     margin: 2rem 0;
     padding: 1.5rem 2rem;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border-left: 5px solid #e74c3c;
+    background: var(--color-accent);
+    border-left: 4px solid var(--color-primary);
     border-radius: 0 8px 8px 0;
-    box-shadow:
-      0 2px 4px rgba(0, 0, 0, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.8);
     position: relative;
   }
 
@@ -179,23 +167,20 @@ const { title } = Astro.props;
     content: ""
       ";
     font-size: 3rem;
-    color: #e74c3c;
+    color: var(--color-primary);
     position: absolute;
     top: -0.5rem;
     left: 1rem;
-    font-family: "
-      Georgia ", serif;
   }
 
   .content :global(blockquote)::after {
     content: "
       "";
     font-size: 3rem;
-    color: #e74c3c;
+    color: var(--color-primary);
     position: absolute;
     bottom: -1.5rem;
     right: 1rem;
-    font-family: "Georgia", serif;
   }
 
   /* Minimalistic lists */
@@ -233,7 +218,7 @@ const { title } = Astro.props;
 
   /* Beautiful links */
   .content :global(a) {
-    color: #3498db;
+    color: var(--color-primary);
     text-decoration: none;
     border-bottom: 2px solid transparent;
     transition: all 0.3s ease;
@@ -241,17 +226,16 @@ const { title } = Astro.props;
   }
 
   .content :global(a:hover) {
-    color: #2980b9;
-    border-bottom-color: #3498db;
-    text-shadow: 0 0 1px rgba(52, 152, 219, 0.3);
+    color: var(--color-primary-hover);
+    border-bottom-color: var(--color-primary);
   }
 
   .content :global(a:visited) {
-    color: #8e44ad;
+    color: var(--color-primary);
   }
 
   .content :global(a:active) {
-    color: #e74c3c;
+    color: var(--color-primary-hover);
   }
 
   /* Retro tables */
@@ -266,8 +250,8 @@ const { title } = Astro.props;
   }
 
   .content :global(th) {
-    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
-    color: white;
+    background: var(--color-accent);
+    color: var(--color-text);
     padding: 1rem;
     text-align: left;
     font-weight: 600;
@@ -278,17 +262,17 @@ const { title } = Astro.props;
 
   .content :global(td) {
     padding: 1rem;
-    border-bottom: 1px solid #ecf0f1;
-    color: #2c3e50;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text);
     vertical-align: top;
   }
 
   .content :global(tr:nth-child(even)) {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: var(--color-accent);
   }
 
   .content :global(tr:hover) {
-    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    background: var(--color-accent);
     transition: background 0.3s ease;
   }
 
@@ -316,18 +300,9 @@ const { title } = Astro.props;
   /* Artistic horizontal rules */
   .content :global(hr) {
     border: none;
-    height: 3px;
+    height: 1px;
     margin: 3rem 0;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      #e74c3c 25%,
-      #3498db 50%,
-      #f39c12 75%,
-      transparent 100%
-    );
-    border-radius: 2px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: var(--color-border);
   }
 
   /* Definition lists */
@@ -337,7 +312,7 @@ const { title } = Astro.props;
 
   .content :global(dt) {
     font-weight: 700;
-    color: #2c3e50;
+    color: var(--color-text);
     margin-top: 1rem;
     font-size: 1.1rem;
   }
@@ -345,36 +320,33 @@ const { title } = Astro.props;
   .content :global(dd) {
     margin-left: 1.5rem;
     margin-top: 0.5rem;
-    color: #34495e;
+    color: var(--color-text);
     line-height: 1.7;
   }
 
   /* Retro keyboard and sample */
   .content :global(kbd) {
     font-family: "Courier New", monospace;
-    background: linear-gradient(135deg, #ecf0f1 0%, #bdc3c7 100%);
-    border: 1px solid #95a5a6;
+    background: var(--color-accent);
+    border: 1px solid var(--color-border);
     border-radius: 4px;
     padding: 0.25rem 0.5rem;
     font-size: 0.8rem;
-    box-shadow:
-      0 2px 4px rgba(0, 0, 0, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.8);
   }
 
   .content :global(samp) {
     font-family: "Courier New", monospace;
-    background: #f8f9fa;
-    color: #2c3e50;
+    background: var(--color-accent);
+    color: var(--color-text);
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
-    border: 1px solid #dee2e6;
+    border: 1px solid var(--color-border);
   }
 
   /* Highlighted text */
   .content :global(mark) {
-    background: linear-gradient(135deg, #fef9e7 0%, #fdeaa7 100%);
-    color: #d68910;
+    background: var(--color-accent);
+    color: var(--color-text);
     padding: 0.1rem 0.3rem;
     border-radius: 3px;
     font-weight: 500;

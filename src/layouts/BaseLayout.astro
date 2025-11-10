@@ -46,19 +46,12 @@ const { title, description } = Astro.props;
     </noscript>
 
     <link
-      rel="preload"
+      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      as="style"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
-    <noscript
-      ><link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
-      />
-    </noscript>
 
     <script
       is:inline
@@ -69,55 +62,66 @@ const { title, description } = Astro.props;
   <body>
     <div class="flex flex-row w-screen h-screen overflow-clip">
       <div
-        class="flex flex-col p-5 gap-5 w-64 items-start h-screen drop-shadow-xl bg-white border border-r-2"
+        class="flex flex-col p-5 gap-5 w-64 items-start h-screen drop-shadow-xl bg-white border-r border-gray-200"
+        style="border-right-color: var(--color-border);"
       >
         <div class="flex flex-col gap-1">
           <p>Hi It's Natalie. 👋</p>
-          <p class="text-sm text-gray-600">
-            I'm a Web Developer currently working at Spellbook and a second year
-            CS Student at MUN
+          <p class="text-sm">
+            Software Developer at Spellbook and 3rd year CS Student at MUN
           </p>
         </div>
 
-        <p>
-          I am currently trying to figure out how to <a
-            href="https://www.spellbook.legal/">spell book</a
-          > having a hard time but I'm pretty sure chatgpt may help :(
-        </p>
-        <p>
-          previously a satellite at <br /><a href="https://www.c-core.ca"
-            >c-core</a
-          > summer 2024 through to the winter months <br />(it got cold up
-          there)
-        </p>
+        <div>
+          <h3 class="pb-1">Experience:</h3>
+          <div class="flex flex-col gap-2 text-sm">
+            <div>
+              <a href="https://spellbook.legal/" class="font-semibold"
+                >Spellbook</a
+              >
+              <p>Software Developer</p>
+            </div>
+            <div>
+              <a href="https://c-core.ca/" class="font-semibold">C-CORE</a>
+              <p>Junior Software Developer</p>
+            </div>
+          </div>
+        </div>
         <div>
           <h3 class="pb-1">Projects:</h3>
-          <div class="flex flex-col gap-1">
-            <a href="https://notmg.com" class="pl-1"> notmg </a>
-            <a href="https://notmg.com" class="pl-1">
-              vulkan shenanigans 💅 <br />(I want to return to)</a
-            >
-          </div>
-        </div>
-        <div>
-          <div class="flex flex-col gap-1">
-            <h3 class="pb-1">
-              Nat Posting
-              <span class="pb-1 text-gray-500 text-sm"> (to do) </span>:
-            </h3>
-            <a href="https://notmg.com" class="pl-1"> Odin vs. C++ </a>
-          </div>
-        </div>
-        <div>
-          <h3 class="pb-1">Socials:</h3>
-          <div class="flex flex-col gap-1 pl-1">
-            <div class="w-max flex h-max gap-1 items-center">
-              <i class="fa-solid fa-envelope w-3.5"></i>
-              <span class="link">nataliec2k5 [at] gmail [dot] com</span>
+          <div class="flex flex-col gap-2 text-sm">
+            <div>
+              <a href="https://ncashin.dev" class="font-semibold">ncashin.dev</a
+              >
+              <p>Personal Homepage</p>
+              <p class="text-xs">Astro, Tailwind, MDX</p>
             </div>
-            <div class="w-max flex h-max gap-1 items-center">
+            <div>
+              <a href="https://github.com/ncashin/notmg" class="font-semibold"
+                >notmg</a
+              >
+              <p>Multiplayer Game</p>
+              <p class="text-xs">Elixir, Phoenix, TypeScript</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="pb-1">Contact:</h3>
+          <div class="flex flex-col gap-1">
+            <div class="w-max flex h-max gap-2 items-center">
+              <i class="fa-solid fa-envelope w-3.5"></i>
+              <a href="mailto:me@ncashin.dev" class="text-sm">me@ncashin.dev</a>
+            </div>
+            <div class="w-max flex h-max gap-2 items-center">
               <i class="fab fa-github w-3.5"></i>
-              <a href="https://github.com/ncashin/"> github </a>
+              <a href="https://github.com/ncashin/" class="text-sm"
+                >github.com/ncashin</a
+              >
+            </div>
+            <div class="w-max flex h-max gap-2 items-center">
+              <i class="fa-solid fa-globe w-3.5"></i>
+              <a href="https://ncashin.dev/" class="text-sm">ncashin.dev</a>
             </div>
           </div>
         </div>
@@ -125,12 +129,6 @@ const { title, description } = Astro.props;
         <Triangle />
 
         <div class="flex-grow"></div>
-        <div>
-          <p>Made with ℒ♡ⓥℯ</p>
-          <p>
-            by <span class="font-['Mr_Dafoe'] text-xl px-1">Natalie</span> 💖
-          </p>
-        </div>
       </div>
 
       <div
