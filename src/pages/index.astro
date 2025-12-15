@@ -20,124 +20,341 @@ try {
 ---
 
 <BaseLayout title="ncashin.dev">
-  <main>
-    <div class="flex gap-6 px-7 pt-7 pb-6">
-      <div class="flex-1">
-        <h1 class="text-2xl">Hi I'm Natalie</h1>
-        <p class="font-sans text-sm mt-4">
-          I'm currently implementing and iterating on internal AI systems at
-          Spellbook.
-        </p>
-        <p class="font-sans text-sm mt-4">
-          In my freetime I'm building notmg a multiplayer top-down shooter <span
-            class="font-italic">heavily</span
-          > inspired by realm of the mad god
-        </p>
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm">
+    <div class="px-6 py-4">
+      <div class="flex items-center justify-between">
+        <a
+          href="/"
+          class="text-base font-medium hover:opacity-70 transition-opacity"
+          >ncashin.dev</a
+        >
+        <div class="flex gap-4 text-sm">
+          <a href="#work" class="text-black hover:opacity-70 transition-opacity"
+            >Work</a
+          >
+          <a
+            href="#projects"
+            class="text-black hover:opacity-70 transition-opacity">Projects</a
+          >
+        </div>
+      </div>
+    </div>
+  </nav>
 
-        <section class="font-sans mt-8">
-          <h2 class="text-lg font-serif mb-2">Contact</h2>
-          <div class="flex flex-col gap-2 text-sm">
-            <p>
-              <a href="mailto:me@ncashin.dev" class="text-black hover:underline"
-                >me@ncashin.dev</a
-              >
+  <main class="min-h-screen">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_600px] gap-8 px-6">
+      <!-- Left Column: Content -->
+      <div class="max-w-2xl">
+        <!-- Hero Section -->
+        <section class="pt-12 pb-16">
+          <div class="mb-10">
+            <h1
+              class="text-3xl md:text-4xl font-bold mb-4 leading-tight tracking-tight"
+            >
+              Natalie Cashin
+            </h1>
+            <p class="text-base text-gray-700 leading-relaxed mb-3">
+              Software developer and AI operations lead
             </p>
-            <p>
+            <p class="text-base text-gray-700 leading-relaxed mb-3">
+              Currently implementing and iterating on internal AI systems at
+              <a
+                href="https://spellbook.legal/"
+                class="underline hover:opacity-70 transition-opacity"
+                >Spellbook</a
+              >.
+            </p>
+            <p class="text-base text-gray-700 leading-relaxed mb-6">
+              In my freetime I'm building <span class="italic">notmg</span>, a
+              multiplayer top-down shooter
+              <span class="italic">heavily</span> inspired by Realm of the Mad God.
+            </p>
+            <div class="flex flex-wrap gap-4 text-sm">
+              <a
+                href="mailto:me@ncashin.dev"
+                class="text-black hover:opacity-70 transition-opacity">Email</a
+              >
               <a
                 href="https://github.com/ncashin"
-                class="text-black hover:underline">github</a
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-black hover:opacity-70 transition-opacity">GitHub</a
               >
-            </p>
+              <a
+                href="https://linkedin.com/in/ncashin"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-black hover:opacity-70 transition-opacity"
+                >LinkedIn</a
+              >
+              <a
+                href="https://twitter.com/ncashin"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-black hover:opacity-70 transition-opacity"
+                >Twitter</a
+              >
+            </div>
           </div>
         </section>
 
-        <section class="font-sans flex flex-col gap-9 mt-8">
-          <div class="flex flex-col gap-4">
-            <h2 class="text-lg font-serif">
-              <a
-                href="https://spellbook.legal/"
-                class="text-black hover:underline">Spellbook</a
-              >
-            </h2>
-            <div class="flex flex-col gap-6 text-sm">
-              <JobPosition>
-                <p class="font-medium">AI Operations Lead</p>
-                <p class="">January 2026 - Present</p>
-                <p class="">React, TypeScript, Node.JS, MongoDB</p>
-              </JobPosition>
-              <JobPosition>
-                <p class="font-medium">Software Developer</p>
-                <p class="">September 2025 - December 2025</p>
-                <p class="">React, TypeScript, Node.JS, MongoDB</p>
-                <p>Continued work from prior position</p>
-              </JobPosition>
-              <JobPosition>
-                <p class="font-medium">
-                  Associate Software Developer - Internship
-                </p>
-                <p class="">May 2025 - August 2025</p>
-                <p class="">React, TypeScript, Node.JS, MongoDB</p>
-                <p class="">
-                  Worked on Spellbook Associate the #1 AI Agent for Contract Law
-                </p>
-              </JobPosition>
+        <!-- Work Section -->
+        <section id="work" class="pb-16 scroll-mt-20">
+          <h2 class="text-2xl font-bold mb-8">Work</h2>
+
+          <div class="space-y-10">
+            <!-- Spellbook -->
+            <div class="flex flex-col gap-4">
+              <div>
+                <a
+                  href="https://spellbook.legal/"
+                  class="font-semibold text-lg hover:underline transition-opacity"
+                  >Spellbook</a
+                >
+              </div>
+              <div class="ml-0 space-y-6">
+                <div class="flex flex-col gap-2">
+                  <p class="font-medium text-base">AI Operations Lead</p>
+                  <p class="text-sm text-gray-600">January 2026 - Present</p>
+                  <p class="text-sm text-gray-600">
+                    React, TypeScript, Node.JS, MongoDB
+                  </p>
+                </div>
+                <div class="flex flex-col gap-2">
+                  <p class="font-medium text-base">Software Developer</p>
+                  <p class="text-sm text-gray-600">
+                    September 2025 - December 2025
+                  </p>
+                  <p class="text-sm text-gray-600">
+                    React, TypeScript, Node.JS, MongoDB
+                  </p>
+                </div>
+                <div class="flex flex-col gap-2">
+                  <p class="font-medium text-base">
+                    Associate Software Developer - Internship
+                  </p>
+                  <p class="text-sm text-gray-600">May 2025 - August 2025</p>
+                  <p class="text-sm text-gray-600">
+                    React, TypeScript, Node.JS, MongoDB
+                  </p>
+                  <p class="text-sm text-gray-700 mt-1">
+                    Worked on Spellbook Associate the #1 AI Agent for Contract
+                    Law
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- C-CORE -->
+            <div class="flex flex-col gap-4">
+              <div>
+                <a
+                  href="https://c-core.ca/"
+                  class="font-semibold text-lg hover:underline transition-opacity"
+                  >C-CORE</a
+                >
+              </div>
+              <div class="ml-0 space-y-6">
+                <div class="flex flex-col gap-2">
+                  <p class="font-medium text-base">Junior Software Developer</p>
+                  <p class="text-sm text-gray-600">
+                    September 2024 - December 2024
+                  </p>
+                  <p class="text-sm text-gray-600">
+                    React, TypeScript, Python, FastAPI, PostgreSQL, PostGIS
+                  </p>
+                </div>
+                <div class="flex flex-col gap-2">
+                  <p class="font-medium text-base">
+                    Student Software Developer
+                  </p>
+                  <p class="text-sm text-gray-600">May 2024 - August 2024</p>
+                  <p class="text-sm text-gray-600">
+                    React, TypeScript, Python, FastAPI, PostgreSQL, PostGIS
+                  </p>
+                  <p class="text-sm text-gray-700 mt-1">
+                    Developed a React web application using geospatial libraries
+                    (Turf, GDAL, etc.) and proprietary data to support GIS
+                    analysts and their workflow.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div class="flex flex-col gap-4">
-            <h2 class="text-lg font-serif">
-              <a href="https://c-core.ca/" class="text-black hover:underline"
-                >C-CORE</a
-              >
-            </h2>
-            <div class="flex flex-col gap-6 text-sm">
-              <JobPosition>
-                <p class="font-medium">Junior Software Developer</p>
-                <p class="">September 2024 - December 2024</p>
-                <p class="">
-                  React, TypeScript, Python, FastAPI, PostgreSQL, PostGIS
-                </p>
-                <p>Continued work from prior position</p>
-              </JobPosition>
-              <JobPosition>
-                <p class="font-medium">Student Software Developer</p>
-                <p class="">May 2024 - August 2024</p>
-                <p class="">
-                  React, TypeScript, Python, FastAPI, PostgreSQL, PostGIS
-                </p>
-                <p>
-                  Developed a React web application using geospatial libraries
-                  (Turf, GDAL, etc.) and proprietary data to support GIS
-                  analysts and their workflow.
-                </p>
-                <p>
-                  Worked with a Python backend to log performance metrics,
-                  ensuring satisfaction of project and contract requirements.
-                </p>
-              </JobPosition>
+        <!-- Projects Section -->
+        <section id="projects" class="pb-16 scroll-mt-20">
+          <h2 class="text-2xl font-bold mb-8">Projects</h2>
+          <div class="flex flex-col gap-6">
+            <div class="flex flex-col gap-1">
+              <div class="flex items-baseline gap-2">
+                <a
+                  href="#"
+                  class="font-medium text-base hover:underline transition-opacity"
+                  >notmg</a
+                >
+                <span class="text-xs text-gray-500">2024</span>
+              </div>
+              <p class="text-xs text-gray-600">
+                TypeScript, Node.js, WebSockets, Phaser
+              </p>
+            </div>
+            <div class="flex flex-col gap-1">
+              <div class="flex items-baseline gap-2">
+                <a
+                  href="#"
+                  class="font-medium text-base hover:underline transition-opacity"
+                  >networked ecs</a
+                >
+                <span class="text-xs text-gray-500">2024</span>
+              </div>
+              <p class="text-xs text-gray-600">Rust, WebAssembly, ECS</p>
+            </div>
+            <div class="flex flex-col gap-1">
+              <div class="flex items-baseline gap-2">
+                <a
+                  href="#"
+                  class="font-medium text-base hover:underline transition-opacity"
+                  >doit 2025 hackathon</a
+                >
+                <span class="text-xs text-gray-500">2025</span>
+              </div>
+              <p class="text-xs text-gray-600">
+                React, TypeScript, Node.js, WebSockets
+              </p>
             </div>
           </div>
         </section>
       </div>
 
-      <aside class="w-96 flex-shrink-0">
-        <div class="sticky top-7 space-y-8">
-          {
-            imageEntries.map(({ path }, index) => {
-              // Alternate rotation direction for visual interest
-              const rotation = index % 2 === 0 ? "rotate-2" : "-rotate-2";
-              return (
-                <img
-                  src={path}
-                  alt="Gallery image"
-                  class={`w-full h-auto shadow-2xl ${rotation}`}
-                  loading="lazy"
-                />
-              );
-            })
-          }
-        </div>
-      </aside>
+      <!-- Right Column: Gallery Images -->
+      {
+        imageEntries.length > 0 && (
+          <aside class="hidden lg:block relative z-50">
+            <div class="sticky top-20 pt-12">
+              <div class="relative overflow-visible scroll-image-container">
+                {imageEntries.map(({ path }, index) => {
+                  const rotations = [2, -3, 1.5, -2.5, 3, -1.5];
+                  const rotation = rotations[index % rotations.length];
+                  return (
+                    <img
+                      src={path}
+                      alt="Gallery image"
+                      class="absolute top-1/2 left-1/2 scroll-image max-w-[600px] h-auto"
+                      style={`transform: translate(-50%, -50%) rotate(${rotation}deg); will-change: transform; z-index: ${1000 + index};`}
+                      data-index={index}
+                      loading="lazy"
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          </aside>
+        )
+      }
     </div>
   </main>
+
+  <script>
+    // Scroll-based image swap animation
+    if (typeof window !== "undefined") {
+      const scrollImages =
+        document.querySelectorAll<HTMLImageElement>(".scroll-image");
+      const container = document.querySelector<HTMLElement>(
+        ".scroll-image-container"
+      );
+      const imageCount = scrollImages.length;
+
+      if (imageCount > 0 && container) {
+        // Wait for all images to load to set container size to the largest
+        let loadedCount = 0;
+        let maxWidth = 0;
+        let maxHeight = 0;
+
+        function setContainerSize() {
+          if (!container) return;
+          container.style.width = maxWidth + "px";
+          container.style.height = maxHeight + "px";
+        }
+
+        scrollImages.forEach((img) => {
+          if (img.complete) {
+            const rect = img.getBoundingClientRect();
+            maxWidth = Math.max(maxWidth, rect.width);
+            maxHeight = Math.max(maxHeight, rect.height);
+            loadedCount++;
+            if (loadedCount === imageCount) {
+              setContainerSize();
+            }
+          } else {
+            img.addEventListener("load", () => {
+              const rect = img.getBoundingClientRect();
+              maxWidth = Math.max(maxWidth, rect.width);
+              maxHeight = Math.max(maxHeight, rect.height);
+              loadedCount++;
+              if (loadedCount === imageCount) {
+                setContainerSize();
+              }
+            });
+          }
+        });
+
+        // Calculate scroll thresholds
+        const scrollSectionHeight = 300;
+        const totalScrollHeight = scrollSectionHeight * (imageCount - 1);
+
+        function updateImagePositions() {
+          const scrollY = window.scrollY;
+          const clampedScroll = Math.max(
+            0,
+            Math.min(scrollY, totalScrollHeight)
+          );
+          const currentIndex = Math.floor(clampedScroll / scrollSectionHeight);
+          const nextIndex = Math.min(currentIndex + 1, imageCount - 1);
+          const progress =
+            (clampedScroll % scrollSectionHeight) / scrollSectionHeight;
+
+          scrollImages.forEach((img, index) => {
+            const rotation =
+              img.style.transform.match(/rotate\(([^)]+)\)/)?.[1] || "0deg";
+
+            if (index === currentIndex) {
+              // Current image: moves up and out
+              const translateY = -50 - progress * 100;
+              img.style.transform = `translate(-50%, ${translateY}%) rotate(${rotation})`;
+              img.style.zIndex = (1000 + imageCount - index).toString();
+            } else if (index === nextIndex && currentIndex < imageCount - 1) {
+              // Next image: moves up from below into view
+              const translateY = 50 + (1 - progress) * 100;
+              img.style.transform = `translate(-50%, ${translateY}%) rotate(${rotation})`;
+              img.style.zIndex = (1000 + imageCount - index).toString();
+            } else if (index < currentIndex) {
+              // Past images: already moved up and out
+              img.style.transform = `translate(-50%, -150%) rotate(${rotation})`;
+              img.style.zIndex = "0";
+            } else {
+              // Future images: waiting below
+              img.style.transform = `translate(-50%, 150%) rotate(${rotation})`;
+              img.style.zIndex = "0";
+            }
+          });
+        }
+
+        let ticking = false;
+        window.addEventListener("scroll", () => {
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              updateImagePositions();
+              ticking = false;
+            });
+            ticking = true;
+          }
+        });
+
+        updateImagePositions();
+      }
+    }
+  </script>
 </BaseLayout>
