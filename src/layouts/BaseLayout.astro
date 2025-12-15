@@ -1,12 +1,5 @@
 ---
 import "../styles/global.css";
-import "normalize.css";
-import "7.css/dist/7.scoped.css";
-import Window from "../components/Window.astro";
-import Triangle from "../components/triangle.html";
-
-import { ClientRouter } from "astro:transitions";
-import Blog from "./Blog.astro";
 
 interface Props {
   title: string;
@@ -21,129 +14,11 @@ const { title, description } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-
-    <ClientRouter />
-
-    <meta name="description" content={description} />
-
+    {description && <meta name="description" content={description} />}
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-
-    <link rel="preload" href="/desktop.png" as="image" type="image/png" />
-    <link rel="preload" href="/natalie.jpg" as="image" type="image/jpeg" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Share+Tech+Mono&display=swap"
-      as="style"
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Share+Tech+Mono&display=swap"
-      />
-    </noscript>
-
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-
-    <script
-      is:inline
-      type="module"
-      src="https://esm.sh/css-doodle/css-doodle.min.js?raw"></script>
   </head>
 
   <body>
-    <div class="flex flex-row w-screen h-screen overflow-clip">
-      <div
-        class="flex flex-col p-5 gap-5 w-64 items-start h-screen drop-shadow-xl bg-white border-r border-gray-200"
-        style="border-right-color: var(--color-border);"
-      >
-        <div class="flex flex-col gap-1">
-          <p>Hi It's Natalie. 👋</p>
-          <p class="text-sm">
-            Software Developer at Spellbook and 3rd year CS Student at MUN
-          </p>
-        </div>
-
-        <div>
-          <h3 class="pb-1">Experience:</h3>
-          <div class="flex flex-col gap-2 text-sm">
-            <div>
-              <a href="https://spellbook.legal/" class="font-semibold"
-                >Spellbook</a
-              >
-              <p>Software Developer</p>
-            </div>
-            <div>
-              <a href="https://c-core.ca/" class="font-semibold">C-CORE</a>
-              <p>Junior Software Developer</p>
-            </div>
-          </div>
-        </div>
-        <div>
-          <h3 class="pb-1">Projects:</h3>
-          <div class="flex flex-col gap-2 text-sm">
-            <div>
-              <a href="https://ncashin.dev" class="font-semibold">ncashin.dev</a
-              >
-              <p>Personal Homepage</p>
-              <p class="text-xs">Astro, Tailwind, MDX</p>
-            </div>
-            <div>
-              <a href="https://github.com/ncashin/notmg" class="font-semibold"
-                >notmg</a
-              >
-              <p>Multiplayer Game</p>
-              <p class="text-xs">Elixir, Phoenix, TypeScript</p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h3 class="pb-1">Contact:</h3>
-          <div class="flex flex-col gap-1">
-            <div class="w-max flex h-max gap-2 items-center">
-              <i class="fa-solid fa-envelope w-3.5"></i>
-              <a href="mailto:me@ncashin.dev" class="text-sm">me@ncashin.dev</a>
-            </div>
-            <div class="w-max flex h-max gap-2 items-center">
-              <i class="fab fa-github w-3.5"></i>
-              <a href="https://github.com/ncashin/" class="text-sm"
-                >github.com/ncashin</a
-              >
-            </div>
-            <div class="w-max flex h-max gap-2 items-center">
-              <i class="fa-solid fa-globe w-3.5"></i>
-              <a href="https://ncashin.dev/" class="text-sm">ncashin.dev</a>
-            </div>
-          </div>
-        </div>
-
-        <Triangle />
-
-        <div class="flex-grow"></div>
-      </div>
-
-      <div
-        class="relative flex flex-row justify-around gap-8 p-8 w-full h-full"
-      >
-        <img
-          src="/desktop.png"
-          alt="Desktop background"
-          class="absolute inset-0 w-full h-full object-cover -z-10"
-        />
-
-        <Window title="guestbook">
-          <iframe src="https://ncashin.atabook.org/" class="h-[48rem]"></iframe>
-        </Window>
-      </div>
-    </div>
+    <slot />
   </body>
 </html>

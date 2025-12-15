@@ -1,8 +1,143 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Post from "../components/Post.astro";
+import JobPosition from "../components/JobPosition.astro";
+
+// Get all images from the gallery folder
+import { readdir } from "fs/promises";
+import { join } from "path";
+
+let imageEntries: { path: string }[] = [];
+try {
+  const galleryPath = join(process.cwd(), "public", "gallery");
+  const files = await readdir(galleryPath);
+  imageEntries = files
+    .filter((file) => /\.(png|jpg|jpeg|gif|webp|svg)$/i.test(file))
+    .map((file) => ({ path: `/gallery/${file}` }))
+    .sort((a, b) => a.path.localeCompare(b.path));
+} catch (error) {
+  console.error("Error reading gallery folder:", error);
+}
 ---
 
-<BaseLayout title="ncashin.dev" description="My personal site">
-  <Post />
+<BaseLayout title="ncashin.dev">
+  <main>
+    <div class="flex gap-6 px-7 pt-7 pb-6">
+      <div class="flex-1">
+        <h1 class="text-2xl">Hi I'm Natalie</h1>
+        <p class="font-sans text-sm mt-4">
+          I'm currently implementing and iterating on internal AI systems at
+          Spellbook.
+        </p>
+        <p class="font-sans text-sm mt-4">
+          In my freetime I'm building notmg a multiplayer top-down shooter <span
+            class="font-italic">heavily</span
+          > inspired by realm of the mad god
+        </p>
+
+        <section class="font-sans mt-8">
+          <h2 class="text-lg font-serif mb-2">Contact</h2>
+          <div class="flex flex-col gap-2 text-sm">
+            <p>
+              <a href="mailto:me@ncashin.dev" class="text-black hover:underline"
+                >me@ncashin.dev</a
+              >
+            </p>
+            <p>
+              <a
+                href="https://github.com/ncashin"
+                class="text-black hover:underline">github</a
+              >
+            </p>
+          </div>
+        </section>
+
+        <section class="font-sans flex flex-col gap-9 mt-8">
+          <div class="flex flex-col gap-4">
+            <h2 class="text-lg font-serif">
+              <a
+                href="https://spellbook.legal/"
+                class="text-black hover:underline">Spellbook</a
+              >
+            </h2>
+            <div class="flex flex-col gap-6 text-sm">
+              <JobPosition>
+                <p class="font-medium">AI Operations Lead</p>
+                <p class="">January 2026 - Present</p>
+                <p class="">React, TypeScript, Node.JS, MongoDB</p>
+              </JobPosition>
+              <JobPosition>
+                <p class="font-medium">Software Developer</p>
+                <p class="">September 2025 - December 2025</p>
+                <p class="">React, TypeScript, Node.JS, MongoDB</p>
+                <p>Continued work from prior position</p>
+              </JobPosition>
+              <JobPosition>
+                <p class="font-medium">
+                  Associate Software Developer - Internship
+                </p>
+                <p class="">May 2025 - August 2025</p>
+                <p class="">React, TypeScript, Node.JS, MongoDB</p>
+                <p class="">
+                  Worked on Spellbook Associate the #1 AI Agent for Contract Law
+                </p>
+              </JobPosition>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-4">
+            <h2 class="text-lg font-serif">
+              <a href="https://c-core.ca/" class="text-black hover:underline"
+                >C-CORE</a
+              >
+            </h2>
+            <div class="flex flex-col gap-6 text-sm">
+              <JobPosition>
+                <p class="font-medium">Junior Software Developer</p>
+                <p class="">September 2024 - December 2024</p>
+                <p class="">
+                  React, TypeScript, Python, FastAPI, PostgreSQL, PostGIS
+                </p>
+                <p>Continued work from prior position</p>
+              </JobPosition>
+              <JobPosition>
+                <p class="font-medium">Student Software Developer</p>
+                <p class="">May 2024 - August 2024</p>
+                <p class="">
+                  React, TypeScript, Python, FastAPI, PostgreSQL, PostGIS
+                </p>
+                <p>
+                  Developed a React web application using geospatial libraries
+                  (Turf, GDAL, etc.) and proprietary data to support GIS
+                  analysts and their workflow.
+                </p>
+                <p>
+                  Worked with a Python backend to log performance metrics,
+                  ensuring satisfaction of project and contract requirements.
+                </p>
+              </JobPosition>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <aside class="w-96 flex-shrink-0">
+        <div class="sticky top-7 space-y-8">
+          {
+            imageEntries.map(({ path }, index) => {
+              // Alternate rotation direction for visual interest
+              const rotation = index % 2 === 0 ? "rotate-2" : "-rotate-2";
+              return (
+                <img
+                  src={path}
+                  alt="Gallery image"
+                  class={`w-full h-auto shadow-2xl ${rotation}`}
+                  loading="lazy"
+                />
+              );
+            })
+          }
+        </div>
+      </aside>
+    </div>
+  </main>
 </BaseLayout>
