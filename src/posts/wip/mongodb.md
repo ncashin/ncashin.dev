@@ -1,10 +1,10 @@
 ---
-title: "MongoDB Detroit Become Webscale"
+title: "Sharding and You"
 author: "Natalie"
-description: "I have sharded my consciousness and ascended to the cloud"
+description: "I have scaled my consciousness and ascended to the cloud"
 ---
 
-# MongoDB Detroit Become Webscale
+# Sharding and You
 
 ## Disclaimer
 
