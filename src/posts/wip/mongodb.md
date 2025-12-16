@@ -1,10 +1,10 @@
 ---
-title: "MongoDB - Detroit Become Webscale"
+title: "MongoDB Detroit Become Webscale"
 author: "Natalie"
 description: "I have sharded my consciousness and ascended to the cloud"
 ---
 
-# MongoDB - Detroit Become Webscale
+# MongoDB Detroit Become Webscale
 
 ## Disclaimer
 
