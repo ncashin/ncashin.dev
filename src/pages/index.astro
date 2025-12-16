@@ -45,13 +45,22 @@ const allPosts = [...mdPosts, ...mdxPosts].map((post: any) => {
             <div
               class="flex flex-row items-baseline gap-4 text-sm flex-shrink-0"
             >
-              <span class="text-gray-600 hover:text-black cursor-pointer">
+              <span
+                data-scroll-to="work"
+                class="text-gray-600 hover:text-black cursor-pointer"
+              >
                 Work
               </span>
-              <span class="text-gray-600 hover:text-black cursor-pointer">
+              <span
+                data-scroll-to="projects"
+                class="text-gray-600 hover:text-black cursor-pointer"
+              >
                 Projects
               </span>
-              <span class="text-gray-600 hover:text-black cursor-pointer">
+              <span
+                data-scroll-to="connect"
+                class="text-gray-600 hover:text-black cursor-pointer"
+              >
                 Connect
               </span>
             </div>
@@ -402,3 +411,18 @@ const allPosts = [...mdPosts, ...mdxPosts].map((post: any) => {
     scroll-margin-top: 3rem;
   }
 </style>
+
+<script>
+  document.querySelectorAll("[data-scroll-to]").forEach((element) => {
+    element.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetId = element.getAttribute("data-scroll-to");
+      if (targetId) {
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+    });
+  });
+</script>
