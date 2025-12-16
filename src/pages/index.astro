@@ -67,10 +67,12 @@ const allPosts = [...mdPosts, ...mdxPosts].map((post: any) => {
     </section>
 
     <!-- Posts Section -->
-    <section class="px-7 pb-14 max-w-2xl mx-auto border-gray-200 -mt-3">
-      <h2 id="posts" class="text-xl font-semibold mb-6">Posts</h2>
-      {
-        allPosts.length > 0 ? (
+    {
+      allPosts.length > 0 && (
+        <section class="px-7 pb-14 max-w-2xl mx-auto border-gray-200 -mt-3">
+          <h2 id="posts" class="text-xl font-semibold mb-6">
+            Posts
+          </h2>
           <div class="flex flex-col gap-y-2">
             {allPosts.map((post) => (
               <p>
@@ -83,11 +85,9 @@ const allPosts = [...mdPosts, ...mdxPosts].map((post: any) => {
               </p>
             ))}
           </div>
-        ) : (
-          <p class="text-sm text-gray-600">No posts yet. Check back soon!</p>
-        )
-      }
-    </section>
+        </section>
+      )
+    }
 
     <!-- Work Section -->
     <section class="px-7 pt-10 pb-5 max-w-2xl mx-auto border-t border-gray-200">
