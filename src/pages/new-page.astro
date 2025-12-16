@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "New Page";
+---
+
+<BaseLayout title={title}>
+  <main>
+    <div class="flex flex-col bg-black h-screen">
+      <div class="flex flex-row items-center gap-4 mt-32 ml-36">
+        <div class="flex flex-col items-left">
+          <h1
+            class="text-5xl font-bold text-left"
+            style="background: linear-gradient(90deg, #19d3ff 0%, #fcee09 18%, #ff357d 42%, #43ff64 68%, #34fff5 100%);
+              -webkit-background-clip: text; background-clip: text; color: transparent;
+              filter: brightness(1.25) contrast(1.25) drop-shadow(0 2px 6px #1cebad80);"
+          >
+            Natalie Cashin
+          </h1>
+          <h2
+            class="text-3xl text-white font-medium text-left text-gray-600 mt-4"
+          >
+            ナタリー・キャシン
+          </h2>
+        </div>
+        <span class="text-8xl font-bold text-left text-white -mt-4">84</span>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

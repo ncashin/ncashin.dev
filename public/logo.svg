@@ -1,0 +1,13 @@
+<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer ring - Red channel -->
+  <circle cx="24" cy="24" r="20" fill="none" stroke="#ff0000" stroke-width="2" opacity="0.8"/>
+  <!-- Middle ring - Green channel -->
+  <circle cx="24" cy="24" r="20" fill="none" stroke="#00ff00" stroke-width="2" opacity="0.8" transform="translate(0.5, 0)"/>
+  <!-- Inner ring - Blue channel -->
+  <circle cx="24" cy="24" r="20" fill="none" stroke="#0000ff" stroke-width="2" opacity="0.8" transform="translate(-0.5, 0)"/>
+  
+  <!-- Inner circle with chromatic aberration -->
+  <circle cx="24" cy="24" r="12" fill="none" stroke="#ff0000" stroke-width="1.5" opacity="0.8"/>
+  <circle cx="24" cy="24" r="12" fill="none" stroke="#00ff00" stroke-width="1.5" opacity="0.8" transform="translate(0.3, -0.3)"/>
+  <circle cx="24" cy="24" r="12" fill="none" stroke="#0000ff" stroke-width="1.5" opacity="0.8" transform="translate(-0.3, 0.3)"/>
+</svg>

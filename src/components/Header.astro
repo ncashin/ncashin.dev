@@ -1,0 +1,62 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header class="w-full border-b sticky top-0 z-50 bg-white">
+  <nav class="mx-auto px-7 py-4">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-8">
+        <a href="/" class="text-xl font-semibold hover:opacity-70">
+          ncashin.dev
+        </a>
+        <div class="hidden md:flex gap-6">
+          <a
+            href="/"
+            class={`text-sm hover:underline ${
+              currentPath === "/" ? "font-medium" : "text-gray-600"
+            }`}
+          >
+            Home
+          </a>
+          <a
+            href="/blog"
+            class={`text-sm hover:underline ${
+              currentPath.startsWith("/blog") ||
+              currentPath.startsWith("/posts")
+                ? "font-medium"
+                : "text-gray-600"
+            }`}
+          >
+            Blog
+          </a>
+          <a href="/#projects" class="text-sm text-gray-600 hover:underline">
+            Projects
+          </a>
+          <a href="/#contact" class="text-sm text-gray-600 hover:underline">
+            Contact
+          </a>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <a
+          href="https://github.com/ncashin"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-gray-600 hover:text-black"
+          aria-label="GitHub"
+        >
+          GitHub
+        </a>
+        <a
+          href="https://twitter.com/ncashin"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-gray-600 hover:text-black"
+          aria-label="Twitter"
+        >
+          Twitter
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>

@@ -1,193 +1,340 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import JobPosition from "../components/JobPosition.astro";
-
-// Get all images from the gallery folder
-import { readdir } from "fs/promises";
-import { join } from "path";
-
-let imageEntries: { path: string }[] = [];
-try {
-  const galleryPath = join(process.cwd(), "public", "gallery");
-  const files = await readdir(galleryPath);
-  imageEntries = files
-    .filter((file) => /\.(png|jpg|jpeg|gif|webp|svg)$/i.test(file))
-    .map((file) => ({ path: `/gallery/${file}` }))
-    .sort((a, b) => a.path.localeCompare(b.path));
-} catch (error) {
-  console.error("Error reading gallery folder:", error);
-}
 ---
 
-<BaseLayout title="ncashin.dev">
-  <main
-    class="min-h-screen w-screen grid grid-cols-[1fr_1fr_auto] auto-rows-min gap-x-16 gap-y-6 px-7 pt-7 pb-6 items-start"
-  >
-    <div class="col-span-1 flex flex-col gap-12 h-[calc(100vh-3.25rem)]">
-      <section>
-        <div>
-          <h1 class="text-2xl font-bold">Hi I'm Natalie</h1>
-          <p class="font-sans text-sm mt-4">
-            I'm currently implementing and iterating on internal AI systems at
-            Spellbook.
-          </p>
-          <p class="font-sans text-sm mt-4">
-            In my freetime I'm building notmg a multiplayer top-down shooter <span
-              class="font-italic">heavily</span
-            > inspired by realm of the mad god
-          </p>
-        </div>
-        <div class="flex flex-wrap mt-6 gap-6 text-sm font-sans">
-          <a
-            href="mailto:me@ncashin.dev"
-            class="text-black underline hover:opacity-70 cursor-pointer"
-            >Email</a
+<BaseLayout title="Natalie Cashin">
+  <main class="min-h-screen w-full">
+    <!-- Hero Section -->
+    <section
+      class="px-7 pr-12 py-12 max-w-2xl mx-auto border-t border-gray-200"
+    >
+      <div class="w-full">
+        <div class="mb-8">
+          <div class="circle-container mb-4">
+            <div class="rainbow-ring-bg"></div>
+            <div class="rainbow-ring"></div>
+          </div>
+          <div
+            class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-8"
           >
-          <a
-            href="https://github.com/ncashin"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-black underline hover:opacity-70 cursor-pointer"
-            >GitHub</a
-          >
-          <a
-            href="https://linkedin.com/in/ncashin"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-black underline hover:opacity-70 cursor-pointer"
-            >LinkedIn</a
-          >
-          <a
-            href="https://twitter.com/ncashin"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-black underline hover:opacity-70 cursor-pointer"
-            >Twitter</a
-          >
-        </div>
-      </section>
-
-      <div class="flex-grow"></div>
-
-      <section class="font-sans">
-        <div class="flex flex-col gap-4">
-          <h2 class="text-lg font-serif">
-            <a href="https://c-core.ca/" class="text-black hover:underline"
-              >C-CORE</a
+            <div>
+              <h1 class="text-2xl font-semibold mb-2 leading-tight">
+                Hi I'm Natalie
+              </h1>
+              <p class="text-sm text-gray-600">AI Operations Lead</p>
+            </div>
+            <div
+              class="flex flex-row items-baseline gap-4 text-sm flex-shrink-0"
             >
-          </h2>
-          <div class="flex flex-col gap-6 text-sm">
-            <JobPosition>
-              <p class="font-medium">Junior Software Developer</p>
-              <p class="">September 2024 - December 2024</p>
-              <p class="">
+              <a href="#work" class="text-gray-600 hover:text-black"> Work </a>
+              <a href="#projects" class="text-gray-600 hover:text-black">
+                Projects
+              </a>
+              <a href="#connect" class="text-gray-600 hover:text-black">
+                Connect
+              </a>
+            </div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-700 leading-relaxed">
+          I'm a currently implementing and iterating on internal AI systems at
+          Spellbook. In my free time, I'm building notmg, a top down shooter
+          heavily inspired by Realm of the Mad God. When I'm not coding, you can
+          find me rock climbing or exploring new routes.
+        </p>
+      </div>
+    </section>
+
+    <!-- Work Section -->
+    <section
+      id="work"
+      class="px-7 py-12 max-w-2xl mx-auto border-t border-gray-200"
+    >
+      <h2 class="text-xl font-semibold mb-8 mt-8">Work</h2>
+
+      <!-- Spellbook -->
+      <div class="mb-12 flex gap-3.5">
+        <div class="w-8 flex-shrink-0">
+          <img src="/spellbook.svg" alt="Spellbook" class="w-8 h-8" />
+        </div>
+        <div class="flex-1">
+          <h3 class="text-base font-medium mb-4">
+            <a
+              href="https://spellbook.legal/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:opacity-70"
+            >
+              Spellbook
+            </a>
+          </h3>
+
+          <div class="space-y-6">
+            <div class="flex flex-col gap-2.5">
+              <p class="text-sm font-medium">AI Operations Lead</p>
+              <p class="text-sm text-gray-600">Now</p>
+              <p class="text-sm text-gray-600">
+                React, TypeScript, Node.JS, MongoDB
+              </p>
+            </div>
+
+            <div class="flex flex-col gap-2.5">
+              <p class="text-sm font-medium">Software Developer</p>
+              <p class="text-sm text-gray-600">
+                September 2025 - December 2025
+              </p>
+              <p class="text-sm text-gray-600">
+                React, TypeScript, Node.JS, MongoDB
+              </p>
+              <p class="text-sm text-gray-600">
+                Continued work from prior position
+              </p>
+            </div>
+
+            <div class="flex flex-col gap-2.5">
+              <p class="text-sm font-medium">
+                Associate Software Developer - Internship
+              </p>
+              <p class="text-sm text-gray-600">May 2025 - August 2025</p>
+              <p class="text-sm text-gray-600">
+                React, TypeScript, Node.JS, MongoDB
+              </p>
+              <p class="text-sm text-gray-600">
+                Worked on Spellbook Associate the #1 AI Agent for Contract Law
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- C-CORE -->
+      <div class="mb-12 flex gap-3.5">
+        <div class="w-8 flex-shrink-0">
+          <img src="/c-core.jpg" alt="C-CORE" class="w-8 h-8" />
+        </div>
+        <div class="flex-1">
+          <h3 class="text-base font-medium mb-4">
+            <a
+              href="https://c-core.ca/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:opacity-70"
+            >
+              C-CORE
+            </a>
+          </h3>
+
+          <div class="space-y-6">
+            <div class="flex flex-col gap-2.5">
+              <p class="text-sm font-medium">Junior Software Developer</p>
+              <p class="text-sm text-gray-600">
+                September 2024 - December 2024
+              </p>
+              <p class="text-sm text-gray-600">
                 React, TypeScript, Python, FastAPI, PostgreSQL, PostGIS
               </p>
-              <p>Continued work from prior position</p>
-            </JobPosition>
-            <JobPosition>
-              <p class="font-medium">Student Software Developer</p>
-              <p class="">May 2024 - August 2024</p>
-              <p class="">
+              <p class="text-sm text-gray-600">
+                Continued work from prior position
+              </p>
+            </div>
+
+            <div class="flex flex-col gap-2.5">
+              <p class="text-sm font-medium">Student Software Developer</p>
+              <p class="text-sm text-gray-600">May 2024 - August 2024</p>
+              <p class="text-sm text-gray-600">
                 React, TypeScript, Python, FastAPI, PostgreSQL, PostGIS
               </p>
-              <p>
+              <p class="text-sm text-gray-600">
                 Developed a React web application using geospatial libraries
                 (Turf, GDAL, etc.) and proprietary data to support GIS analysts
                 and their workflow.
               </p>
-              <p>
+              <p class="text-sm text-gray-600">
                 Worked with a Python backend to log performance metrics,
                 ensuring satisfaction of project and contract requirements.
               </p>
-            </JobPosition>
+            </div>
           </div>
         </div>
-      </section>
-    </div>
-
-    <section class="col-start-2 row-start-1 font-sans">
-      <div class="flex flex-col gap-4">
-        <h2 class="text-lg font-serif">
-          <a href="https://spellbook.legal/" class="text-black hover:underline"
-            >Spellbook</a
-          >
-        </h2>
-        <div class="flex flex-col gap-6 text-sm">
-          <JobPosition>
-            <p class="font-medium">AI Operations Lead</p>
-            <p class="">January 2026 - Present</p>
-            <p class="">React, TypeScript, Node.JS, MongoDB</p>
-          </JobPosition>
-          <JobPosition>
-            <p class="font-medium">Software Developer</p>
-            <p class="">September 2025 - December 2025</p>
-            <p class="">React, TypeScript, Node.JS, MongoDB</p>
-            <p>Continued work from prior position</p>
-          </JobPosition>
-          <JobPosition>
-            <p class="font-medium">Associate Software Developer - Internship</p>
-            <p class="">May 2025 - August 2025</p>
-            <p class="">React, TypeScript, Node.JS, MongoDB</p>
-            <p class="">
-              Worked on Spellbook Associate the #1 AI Agent for Contract Law
-            </p>
-          </JobPosition>
-        </div>
-        {
-          imageEntries.length > 1 && (
-            <img
-              src={imageEntries[1].path}
-              alt="Gallery image"
-              class="w-full h-auto max-w-full object-contain shadow-md mt-6"
-              loading="lazy"
-            />
-          )
-        }
       </div>
     </section>
 
-    <aside class="col-start-3 row-start-1 w-96 flex flex-col gap-8">
-      <div class="flex flex-col gap-8">
-        {
-          imageEntries.length > 0 && (
-            <img
-              src={imageEntries[0].path}
-              alt="Gallery image"
-              class="w-full h-auto max-w-full object-contain shadow-md"
-              loading="lazy"
-            />
-          )
-        }
-      </div>
-      <section class="font-sans">
-        <h2 class="text-lg font-serif mb-4">Projects</h2>
-        <div class="flex flex-col gap-4 text-sm">
-          <div class="flex flex-col gap-2.5">
-            <p class="font-medium">
-              <a href="#" class="text-black hover:underline">notmg</a>
-            </p>
-            <p class="">2024 - Present</p>
-            <p class="">TypeScript, Node.js, WebSockets, Phaser</p>
-          </div>
-          <div class="flex flex-col gap-2.5">
-            <p class="font-medium">
-              <a href="#" class="text-black hover:underline">networked ecs</a>
-            </p>
-            <p class="">2024 - 2025</p>
-            <p class="">Rust, WebAssembly, ECS</p>
-          </div>
-          <div class="flex flex-col gap-2.5">
-            <p class="font-medium">
-              <a href="#" class="text-black hover:underline"
-                >doit 2025 hackathon</a
-              >
-            </p>
-            <p class="">January 2025</p>
-            <p class="">React, TypeScript, Node.js, WebSockets</p>
-          </div>
+    <!-- Projects Section -->
+    <section
+      id="projects"
+      class="px-7 py-12 max-w-2xl mx-auto border-t border-gray-200"
+    >
+      <h2 class="text-xl font-semibold mb-8 mt-8">Projects</h2>
+
+      <div class="mb-12">
+        <div class="mb-4">
+          <img src="/notmg.png" alt="notmg" class="w-full rounded-lg" />
         </div>
-      </section>
-    </aside>
+        <div class="flex flex-col gap-2.5">
+          <p class="text-sm font-medium">
+            <a href="#" class="hover:opacity-70">notmg</a>
+          </p>
+          <p class="text-sm text-gray-600">2024</p>
+          <p class="text-sm text-gray-600">
+            TypeScript, Node.js, WebSockets, Phaser
+          </p>
+        </div>
+      </div>
+
+      <div class="mb-12">
+        <div class="flex flex-col gap-2.5">
+          <p class="text-sm font-medium">
+            <a href="#" class="hover:opacity-70">networked ecs</a>
+          </p>
+          <p class="text-sm text-gray-600">2024 - 2025</p>
+          <p class="text-sm text-gray-600">Rust, WebAssembly, ECS</p>
+        </div>
+      </div>
+
+      <div class="mb-12">
+        <div class="flex flex-col gap-2.5">
+          <p class="text-sm font-medium">
+            <a href="#" class="hover:opacity-70">doit 2025 hackathon</a>
+          </p>
+          <p class="text-sm text-gray-600">January 2025</p>
+          <p class="text-sm text-gray-600">
+            React, TypeScript, Node.js, WebSockets
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Connect Section -->
+    <section
+      id="connect"
+      class="px-7 py-12 max-w-2xl mx-auto border-t border-gray-200"
+    >
+      <h2 class="text-xl font-semibold mb-6 mt-8">Connect</h2>
+      <div class="flex flex-row gap-12 text-sm">
+        <div class="flex flex-col gap-y-2">
+          <p>
+            <a
+              href="mailto:me@ncashin.dev"
+              class="text-gray-600 hover:text-black"
+            >
+              Email
+            </a>
+          </p>
+          <p>
+            <a
+              href="https://github.com/ncashin"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-600 hover:text-black"
+            >
+              GitHub
+            </a>
+          </p>
+          <p>
+            <a
+              href="https://linkedin.com/in/ncashin"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-600 hover:text-black"
+            >
+              LinkedIn
+            </a>
+          </p>
+          <p>
+            <a
+              href="https://twitter.com/ncashin"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-600 hover:text-black"
+            >
+              Twitter
+            </a>
+          </p>
+        </div>
+        <div class="flex flex-col gap-y-2">
+          <p class="text-gray-500">me@ncashin.dev</p>
+          <p class="text-gray-500">@ncashin</p>
+          <p class="text-gray-500">/in/ncashin</p>
+          <p class="text-gray-500">@ncashin</p>
+        </div>
+      </div>
+    </section>
   </main>
 </BaseLayout>
+
+<style>
+  .circle-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    gap: 0;
+  }
+
+  .rainbow-ring-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;
+    border-radius: 8px;
+    z-index: -2;
+  }
+
+  .rainbow-ring {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      #ff3366,
+      #ff6b35,
+      #ffd23f,
+      #06ffa5,
+      #4ecdc4,
+      #45b7d1,
+      #96ceb4,
+      #ffeaa7,
+      #dda15e,
+      #bc4749,
+      #ff3366
+    );
+    position: relative;
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.25))
+      drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15))
+      drop-shadow(0 0 20px rgba(255, 255, 255, 0.1)) saturate(1.3)
+      contrast(1.15) brightness(1.05);
+    mask: radial-gradient(
+      circle,
+      transparent 18px,
+      black 18px,
+      black 24px,
+      transparent 24px
+    );
+    -webkit-mask: radial-gradient(
+      circle,
+      transparent 18px,
+      black 18px,
+      black 24px,
+      transparent 24px
+    );
+  }
+
+  .rainbow-ring::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      transparent 70%
+    );
+    z-index: -1;
+    filter: blur(12px);
+    pointer-events: none;
+  }
+</style>
