@@ -157,7 +157,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     <!-- Projects Section -->
     <section class="px-7 pt-12 pb-5 max-w-2xl mx-auto border-t border-gray-200">
-      <h2 id="projects" class="text-xl font-semibold mb-8 mt-4">Projects</h2>
+      <h2 id="projects" class="text-xl font-semibold mb-10 mt-4">Projects</h2>
 
       <!-- notmg -->
       <div class="mb-12 flex gap-3.5">
@@ -179,7 +179,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="space-y-6">
             <div class="flex flex-col gap-2.5">
               <p class="text-sm font-medium">Top Down Shooter</p>
-              <p class="text-sm text-gray-600">2024</p>
+              <p class="text-sm text-gray-600">Forever :(</p>
               <p class="text-sm text-gray-600">
                 TypeScript, Node.js, WebSockets, Phaser
               </p>
@@ -232,7 +232,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     <!-- Connect Section -->
     <section class="px-7 pt-8 pb-32 max-w-2xl mx-auto border-t border-gray-200">
-      <h2 id="connect" class="text-xl font-semibold mb-6 mt-8">Connect</h2>
+      <h2 id="connect" class="text-xl font-semibold mb-10 mt-8">Connect</h2>
       <div class="flex flex-row gap-12 text-sm">
         <div class="flex flex-col gap-y-2">
           <p>
@@ -298,10 +298,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   .rainbow-ring {
     width: 48px;
     height: 48px;
-    border-radius: 50%;
-    box-shadow:
-      0 4px 12px rgba(0, 0, 0, 0.15),
-      0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 0;
     background: conic-gradient(
       from 0deg,
       #ff3366,
@@ -317,40 +314,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       #ff3366
     );
     position: relative;
-    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.25))
-      drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15))
-      drop-shadow(0 0 20px rgba(255, 255, 255, 0.1)) saturate(1.3)
-      contrast(1.15) brightness(1.05);
-    mask: radial-gradient(
-      circle,
-      transparent 18px,
-      black 18px,
-      black 24px,
-      transparent 24px
-    );
-    -webkit-mask: radial-gradient(
-      circle,
-      transparent 18px,
-      black 18px,
-      black 24px,
-      transparent 24px
-    );
+    padding: 6px;
   }
 
-  .rainbow-ring::before {
+  .rainbow-ring::after {
     content: "";
     position: absolute;
-    inset: -2px;
-    border-radius: 50%;
-    background: radial-gradient(
-      circle,
-      rgba(255, 255, 255, 0.15) 0%,
-      rgba(255, 255, 255, 0.05) 50%,
-      transparent 70%
-    );
-    z-index: -1;
-    filter: blur(12px);
-    pointer-events: none;
+    inset: 6px;
+    background: black;
   }
 
   h2[id] {
