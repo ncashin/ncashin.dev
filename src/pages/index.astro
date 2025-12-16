@@ -1,5 +1,25 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+// Get all posts from both .md and .mdx files
+const mdPosts = Object.values(
+  import.meta.glob("../posts/*.md", { eager: true })
+);
+const mdxPosts = Object.values(
+  import.meta.glob("../posts/mdx/*.mdx", { eager: true })
+);
+
+const allPosts = [...mdPosts, ...mdxPosts].map((post: any) => {
+  const filePath = post.file.split("/");
+  const fileName = filePath[filePath.length - 1];
+  const slug = fileName.replace(/\.(md|mdx)$/, "");
+  return {
+    slug,
+    title: post.frontmatter.title,
+    description: post.frontmatter.description,
+    url: `/posts/${slug}`,
+  };
+});
 ---
 
 <BaseLayout title="Natalie Cashin">
@@ -25,13 +45,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <div
               class="flex flex-row items-baseline gap-4 text-sm flex-shrink-0"
             >
-              <a href="#work" class="text-gray-600 hover:text-black"> Work </a>
-              <a href="#projects" class="text-gray-600 hover:text-black">
+              <span class="text-gray-600 hover:text-black cursor-pointer">
+                Work
+              </span>
+              <span class="text-gray-600 hover:text-black cursor-pointer">
                 Projects
-              </a>
-              <a href="#connect" class="text-gray-600 hover:text-black">
+              </span>
+              <span class="text-gray-600 hover:text-black cursor-pointer">
                 Connect
-              </a>
+              </span>
             </div>
           </div>
         </div>
@@ -42,6 +64,29 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           at my computer, you can find me rock climbing or exploring new routes.
         </p>
       </div>
+    </section>
+
+    <!-- Posts Section -->
+    <section class="px-7 pb-14 max-w-2xl mx-auto border-gray-200 -mt-3">
+      <h2 id="posts" class="text-xl font-semibold mb-6">Posts</h2>
+      {
+        allPosts.length > 0 ? (
+          <div class="flex flex-col gap-y-2">
+            {allPosts.map((post) => (
+              <p>
+                <a
+                  href={post.url}
+                  class="text-sm text-gray-600 underline hover:text-black"
+                >
+                  {post.title}
+                </a>
+              </p>
+            ))}
+          </div>
+        ) : (
+          <p class="text-sm text-gray-600">No posts yet. Check back soon!</p>
+        )
+      }
     </section>
 
     <!-- Work Section -->

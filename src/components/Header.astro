@@ -19,7 +19,7 @@ const currentPath = Astro.url.pathname;
             Home
           </a>
           <a
-            href="/blog"
+            href="/#posts"
             class={`text-sm hover:underline ${
               currentPath.startsWith("/blog") ||
               currentPath.startsWith("/posts")
@@ -27,7 +27,7 @@ const currentPath = Astro.url.pathname;
                 : "text-gray-600"
             }`}
           >
-            Blog
+            Posts
           </a>
           <a href="/#projects" class="text-sm text-gray-600 hover:underline">
             Projects
