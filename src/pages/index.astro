@@ -298,7 +298,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   .rainbow-ring {
     width: 48px;
     height: 48px;
-    border-radius: 0;
+    border-radius: 50%;
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.15),
+      0 2px 4px rgba(0, 0, 0, 0.1);
     background: conic-gradient(
       from 0deg,
       #ff3366,
@@ -314,14 +317,40 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       #ff3366
     );
     position: relative;
-    padding: 6px;
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.25))
+      drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15))
+      drop-shadow(0 0 20px rgba(255, 255, 255, 0.1)) saturate(1.3)
+      contrast(1.15) brightness(1.05);
+    mask: radial-gradient(
+      circle,
+      transparent 18px,
+      black 18px,
+      black 24px,
+      transparent 24px
+    );
+    -webkit-mask: radial-gradient(
+      circle,
+      transparent 18px,
+      black 18px,
+      black 24px,
+      transparent 24px
+    );
   }
 
-  .rainbow-ring::after {
+  .rainbow-ring::before {
     content: "";
     position: absolute;
-    inset: 6px;
-    background: black;
+    inset: -2px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      transparent 70%
+    );
+    z-index: -1;
+    filter: blur(12px);
+    pointer-events: none;
   }
 
   h2[id] {
