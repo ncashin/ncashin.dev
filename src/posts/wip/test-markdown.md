@@ -1,6 +1,6 @@
 ---
 title: "Comprehensive Markdown Test"
-author: "Natalie"
+author: "Somebody"
 description: "Testing all markdown elements"
 ---
 

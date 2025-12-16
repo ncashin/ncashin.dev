@@ -1,22 +1,25 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
-// Get all posts from both .md and .mdx files
+// Get all posts from .md files
 const mdPosts = Object.values(
   import.meta.glob("../../posts/*.md", { eager: true })
 );
-const mdxPosts = Object.values(
-  import.meta.glob("../../posts/mdx/*.mdx", { eager: true })
-);
 
-const allPosts = [...mdPosts, ...mdxPosts];
+// Get WIP posts only in dev mode
+const isDev = import.meta.env.DEV;
+const wipPosts = isDev
+  ? Object.values(import.meta.glob("../../posts/wip/*.md", { eager: true }))
+  : [];
+
+const allPosts = [...mdPosts, ...wipPosts];
 
 const { slug } = Astro.params;
 
 const currentPost = allPosts.find((post: any) => {
   const filePath = post.file.split("/");
   const fileName = filePath[filePath.length - 1];
-  const postSlug = fileName.replace(/\.(md|mdx)$/, "");
+  const postSlug = fileName.replace(/\.md$/, "");
   return postSlug === slug;
 }) as any;
 
