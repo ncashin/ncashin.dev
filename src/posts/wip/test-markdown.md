@@ -1,5 +1,5 @@
 ---
-title: "Comprehensive Markdown Test"
+title: "Markdown Style Test"
 author: "Somebody"
 description: "Testing all markdown elements"
 ---
