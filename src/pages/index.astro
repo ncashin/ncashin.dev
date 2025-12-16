@@ -10,8 +10,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     >
       <div class="w-full">
         <div class="mb-8">
-          <div class="circle-container mb-4">
-            <div class="rainbow-ring-bg"></div>
+          <div class="circle-container mb-8">
             <div class="rainbow-ring"></div>
           </div>
           <div
@@ -37,8 +36,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </div>
         </div>
         <p class="text-sm text-gray-700 leading-relaxed">
-          I'm a currently implementing and iterating on internal AI systems at
-          Spellbook. In my free time, I'm building notmg, a top down shooter
+          At work I'm currently implementing and iterating on internal AI
+          systems. In my free time, I'm building notmg, a top down shooter
           heavily inspired by Realm of the Mad God. When I'm not coding, you can
           find me rock climbing or exploring new routes.
         </p>
@@ -46,11 +45,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </section>
 
     <!-- Work Section -->
-    <section
-      id="work"
-      class="px-7 py-12 max-w-2xl mx-auto border-t border-gray-200"
-    >
-      <h2 class="text-xl font-semibold mb-8 mt-8">Work</h2>
+    <section class="px-7 pt-11 pb-5 max-w-2xl mx-auto border-t border-gray-200">
+      <h2 id="work" class="text-xl font-semibold mb-8 mt-4">Work</h2>
 
       <!-- Spellbook -->
       <div class="mb-12 flex gap-3.5">
@@ -160,56 +156,82 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </section>
 
     <!-- Projects Section -->
-    <section
-      id="projects"
-      class="px-7 py-12 max-w-2xl mx-auto border-t border-gray-200"
-    >
-      <h2 class="text-xl font-semibold mb-8 mt-8">Projects</h2>
+    <section class="px-7 pt-12 pb-5 max-w-2xl mx-auto border-t border-gray-200">
+      <h2 id="projects" class="text-xl font-semibold mb-8 mt-4">Projects</h2>
 
-      <div class="mb-12">
-        <div class="mb-4">
-          <img src="/notmg.png" alt="notmg" class="w-full rounded-lg" />
+      <!-- notmg -->
+      <div class="mb-12 flex gap-3.5">
+        <div class="w-8 flex-shrink-0">
+          <img src="/notmg-logo.png" alt="notmg" class="w-8 h-8" />
         </div>
-        <div class="flex flex-col gap-2.5">
-          <p class="text-sm font-medium">
-            <a href="#" class="hover:opacity-70">notmg</a>
-          </p>
-          <p class="text-sm text-gray-600">2024</p>
-          <p class="text-sm text-gray-600">
-            TypeScript, Node.js, WebSockets, Phaser
-          </p>
+        <div class="flex-1">
+          <h3 class="text-base font-medium mb-4">
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:opacity-70"
+            >
+              notmg
+            </a>
+          </h3>
+
+          <div class="space-y-6">
+            <div class="flex flex-col gap-2.5">
+              <p class="text-sm font-medium">Top Down Shooter</p>
+              <p class="text-sm text-gray-600">2024</p>
+              <p class="text-sm text-gray-600">
+                TypeScript, Node.js, WebSockets, Phaser
+              </p>
+              <p class="text-sm text-gray-600">
+                A multiplayer top down shooter heavily inspired by Realm of the
+                Mad God
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="mb-12">
-        <div class="flex flex-col gap-2.5">
-          <p class="text-sm font-medium">
-            <a href="#" class="hover:opacity-70">networked ecs</a>
-          </p>
-          <p class="text-sm text-gray-600">2024 - 2025</p>
-          <p class="text-sm text-gray-600">Rust, WebAssembly, ECS</p>
+      <!-- doit 2025 hackathon -->
+      <div class="mb-12 flex gap-3.5">
+        <div class="w-8 flex-shrink-0">
+          <img
+            src="/doit-hackathon.png"
+            alt="doit 2025 hackathon"
+            class="w-8 h-8 rounded-lg"
+          />
         </div>
-      </div>
+        <div class="flex-1">
+          <h3 class="text-base font-medium mb-4">
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:opacity-70"
+            >
+              doit 2025 hackathon
+            </a>
+          </h3>
 
-      <div class="mb-12">
-        <div class="flex flex-col gap-2.5">
-          <p class="text-sm font-medium">
-            <a href="#" class="hover:opacity-70">doit 2025 hackathon</a>
-          </p>
-          <p class="text-sm text-gray-600">January 2025</p>
-          <p class="text-sm text-gray-600">
-            React, TypeScript, Node.js, WebSockets
-          </p>
+          <div class="space-y-6">
+            <div class="flex flex-col gap-2.5">
+              <p class="text-sm font-medium">Hackathon Project</p>
+              <p class="text-sm text-gray-600">January 2025</p>
+              <p class="text-sm text-gray-600">
+                React, TypeScript, Node.js, WebSockets
+              </p>
+              <p class="text-sm text-gray-600">
+                Built during the doit 2025 hackathon event
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Connect Section -->
-    <section
-      id="connect"
-      class="px-7 py-12 max-w-2xl mx-auto border-t border-gray-200"
-    >
-      <h2 class="text-xl font-semibold mb-6 mt-8">Connect</h2>
+    <section class="px-7 pt-8 pb-32 max-w-2xl mx-auto border-t border-gray-200">
+      <h2 id="connect" class="text-xl font-semibold mb-6 mt-8">Connect</h2>
       <div class="flex flex-row gap-12 text-sm">
         <div class="flex flex-col gap-y-2">
           <p>
@@ -267,26 +289,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    width: 64px;
-    height: 64px;
     gap: 0;
-  }
-
-  .rainbow-ring-bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: black;
-    border-radius: 8px;
-    z-index: -2;
   }
 
   .rainbow-ring {
     width: 48px;
     height: 48px;
     border-radius: 50%;
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.15),
+      0 2px 4px rgba(0, 0, 0, 0.1);
     background: conic-gradient(
       from 0deg,
       #ff3366,
@@ -336,5 +350,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     z-index: -1;
     filter: blur(12px);
     pointer-events: none;
+  }
+
+  h2[id] {
+    scroll-margin-top: 1rem;
   }
 </style>
