@@ -6,7 +6,7 @@ description: "How I think about AI use and avoid the slop"
 
 # My Philosophy on AI Usage and Adoption
 
-I work with AI every day, hell I probably talk to ChatGPT more than some of my relatives. It's tempting to use it everywhere and it feels damn good when it works. I'm starting a new role soon where I'm supposed to tell people how and when to use AI.
+I work with AI every day, hell I probably talk to ChatGPT more than some of my relatives. It's tempting to use it everywhere and it feels damn good when it works. I probably use it too much.
 
 ## My Three Criteria
 
