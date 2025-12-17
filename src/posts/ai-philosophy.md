@@ -1,5 +1,5 @@
 ---
-title: "My Take on AI Use and Adoption"
+title: "My Opinion on AI Use and Adoption"
 author: "Natalie"
 description: "How I think about AI use and avoid the slop"
 ---
