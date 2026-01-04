@@ -14,7 +14,7 @@ const { posts } = Astro.props;
 <section
   class="flex items-center justify-center pl-4 pr-4 md:pl-4 md:pr-4 max-w-lg mx-auto"
 >
-  <div class="w-full bg-white/95 backdrop-blur-sm rounded-lg p-4 pb-16">
+  <div class="w-full bg-white/95 backdrop-blur-sm rounded-lg p-4 pb-10">
     <div class="mb-8">
       <div class="circle-container mb-8">
         <div class="rainbow-ring"></div>
@@ -26,24 +26,20 @@ const { posts } = Astro.props;
           <h1 class="text-2xl font-semibold mb-2 leading-tight">
             Hi I'm Natalie
           </h1>
-          <p id="job-title" class="text-sm text-gray-600"></p>
+          <p id="job-title" class="text-sm text-gray-600">AI Operations Lead</p>
         </div>
-        <div class="flex flex-row items-baseline gap-3 text-sm flex-shrink-0">
+        <div
+          class="flex flex-row flex-nowrap items-baseline gap-3 text-sm flex-shrink-0 -mt-0.5"
+        >
           <span
             data-scroll-to="work"
-            class="text-gray-600 hover:text-black cursor-pointer"
+            class="text-gray-600 hover:text-black cursor-pointer whitespace-nowrap"
           >
             Work
           </span>
           <span
-            data-scroll-to="projects"
-            class="text-gray-600 hover:text-black cursor-pointer"
-          >
-            Projects
-          </span>
-          <span
             data-scroll-to="reading"
-            class="text-gray-600 hover:text-black cursor-pointer"
+            class="text-gray-600 hover:text-black cursor-pointer whitespace-nowrap"
           >
             Reading
           </span>
@@ -93,18 +89,21 @@ const { posts } = Astro.props;
     {
       posts.length > 0 && (
         <div>
-          <h2 id="posts" class="text-xl font-semibold mb-4">
+          <h2
+            id="posts"
+            class="text-xl font-semibold mb-4 flex items-baseline gap-2"
+          >
             Posts
+            <span class="text-sm text-gray-400 font-normal">
+              coming soon...
+            </span>
           </h2>
           <div class="flex flex-col gap-y-2">
             {posts.map((post) => (
               <p>
-                <a
-                  href={"/404"}
-                  class="text-sm text-gray-600 underline hover:text-black"
-                >
+                <span class="text-sm text-gray-600 underline hover:text-black">
                   {post.title}
-                </a>
+                </span>
               </p>
             ))}
           </div>

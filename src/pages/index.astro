@@ -22,11 +22,11 @@ const allPosts = [
 
 const sectionClass = "pl-4 pr-4 md:pl-4 md:pr-4  max-w-lg mx-auto";
 const containerClass =
-  "bg-white/95 backdrop-blur-sm rounded-lg p-4 border-t border-gray-200 pt-8";
+  "bg-white/95 backdrop-blur-sm rounded-lg p-4 border-gray-200 pt-0 pb-0";
 ---
 
 <BaseLayout>
-  <main class="w-full relative pt-16">
+  <main class="w-full relative pt-16 pb-16">
     <HeroSection posts={allPosts} />
 
     <section class={sectionClass}>
@@ -66,6 +66,8 @@ const containerClass =
     const fontSize = computedStyle.fontSize;
     const fontWeight = computedStyle.fontWeight;
     const color = computedStyle.color;
+
+    jobTitleElement.textContent = "";
 
     for (let i = 0; i < jobTitle.length; i++) {
       const char = jobTitle[i];
