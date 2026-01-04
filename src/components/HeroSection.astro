@@ -1,0 +1,115 @@
+---
+interface Props {
+  posts: Array<{
+    slug: string;
+    title: string;
+    description: string;
+    url: string;
+  }>;
+}
+
+const { posts } = Astro.props;
+---
+
+<section
+  class="flex items-center justify-center pl-4 pr-4 md:pl-4 md:pr-4 max-w-lg mx-auto"
+>
+  <div class="w-full bg-white/95 backdrop-blur-sm rounded-lg p-4 pb-16">
+    <div class="mb-8">
+      <div class="circle-container mb-8">
+        <div class="rainbow-ring"></div>
+      </div>
+      <div
+        class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-4"
+      >
+        <div>
+          <h1 class="text-2xl font-semibold mb-2 leading-tight">
+            Hi I'm Natalie
+          </h1>
+          <p id="job-title" class="text-sm text-gray-600"></p>
+        </div>
+        <div class="flex flex-row items-baseline gap-3 text-sm flex-shrink-0">
+          <span
+            data-scroll-to="work"
+            class="text-gray-600 hover:text-black cursor-pointer"
+          >
+            Work
+          </span>
+          <span
+            data-scroll-to="projects"
+            class="text-gray-600 hover:text-black cursor-pointer"
+          >
+            Projects
+          </span>
+          <span
+            data-scroll-to="reading"
+            class="text-gray-600 hover:text-black cursor-pointer"
+          >
+            Reading
+          </span>
+        </div>
+      </div>
+    </div>
+    <p class="text-sm text-gray-700 leading-relaxed mb-8">
+      At work I'm implementing and iterating on internal AI systems. In my free
+      time, I'm building notmg, a top down shooter
+      <em>heavily</em> inspired by Realm of the Mad God. When I'm not staring at my
+      computer, you can find me on top of a boulder somewhere.
+    </p>
+    <div class="mb-8">
+      <div class="flex flex-row gap-4 text-sm flex-wrap">
+        <a
+          href="mailto:me@ncashin.dev"
+          class="font-medium text-gray-800 underline underline-offset-2 hover:text-black focus:text-black transition-colors"
+        >
+          me@ncashin.dev
+        </a>
+        <a
+          href="https://github.com/ncashin"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-medium text-gray-800 underline underline-offset-2 hover:text-black focus:text-black transition-colors"
+        >
+          GitHub
+        </a>
+        <a
+          href="https://linkedin.com/in/ncashin"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-medium text-gray-800 underline underline-offset-2 hover:text-black focus:text-black transition-colors"
+        >
+          LinkedIn
+        </a>
+        <a
+          href="https://twitter.com/ncashin"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-medium text-gray-800 underline underline-offset-2 hover:text-black focus:text-black transition-colors"
+        >
+          Twitter
+        </a>
+      </div>
+    </div>
+    {
+      posts.length > 0 && (
+        <div>
+          <h2 id="posts" class="text-xl font-semibold mb-4">
+            Posts
+          </h2>
+          <div class="flex flex-col gap-y-2">
+            {posts.map((post) => (
+              <p>
+                <a
+                  href={"/404"}
+                  class="text-sm text-gray-600 underline hover:text-black"
+                >
+                  {post.title}
+                </a>
+              </p>
+            ))}
+          </div>
+        </div>
+      )
+    }
+  </div>
+</section>

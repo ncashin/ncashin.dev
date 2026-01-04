@@ -1,21 +1,17 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSection from "../components/HeroSection.astro";
+import WorkSection from "../components/WorkSection.astro";
+import ProjectsSection from "../components/ProjectsSection.astro";
+import ReadingSection from "../components/ReadingSection.astro";
 
-// Get all posts from .md files
-const mdPosts = Object.values(
-  import.meta.glob("../posts/*.md", { eager: true })
-);
-
-// Get WIP posts only in dev mode
-const isDev = import.meta.env.DEV;
-const wipPosts = isDev
-  ? Object.values(import.meta.glob("../posts/wip/*.md", { eager: true }))
-  : [];
-
-const allPosts = [...mdPosts, ...wipPosts].map((post: any) => {
-  const filePath = post.file.split("/");
-  const fileName = filePath[filePath.length - 1];
-  const slug = fileName.replace(/\.md$/, "");
+const allPosts = [
+  ...Object.values(import.meta.glob("../posts/*.md", { eager: true })),
+  ...(import.meta.env.DEV
+    ? Object.values(import.meta.glob("../posts/wip/*.md", { eager: true }))
+    : []),
+].map((post: any) => {
+  const slug = post.file.split("/").pop().replace(/\.md$/, "");
   return {
     slug,
     title: post.frontmatter.title,
@@ -23,345 +19,25 @@ const allPosts = [...mdPosts, ...wipPosts].map((post: any) => {
     url: `/posts/${slug}`,
   };
 });
+
+const sectionClass = "pl-4 pr-4 md:pl-4 md:pr-4  max-w-lg mx-auto";
+const containerClass =
+  "bg-white/95 backdrop-blur-sm rounded-lg p-4 border-t border-gray-200 pt-8";
 ---
 
 <BaseLayout>
-  <main class="min-h-screen w-full relative">
-    <!-- Hero Section -->
-    <section
-      class="min-h-screen flex items-center justify-center pl-11 pr-12 md:pl-7 md:pr-7 max-w-2xl mx-auto pb-16"
-    >
-      <div class="w-full">
-        <div class="mb-8">
-          <div class="circle-container mb-8">
-            <div class="rainbow-ring"></div>
-          </div>
-          <div
-            class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-8"
-          >
-            <div>
-              <h1 class="text-2xl font-semibold mb-2 leading-tight">
-                Hi I'm Natalie
-              </h1>
-              <p class="text-sm text-gray-600">AI Operations Lead</p>
-            </div>
-            <div
-              class="flex flex-row items-baseline gap-4 text-sm flex-shrink-0"
-            >
-              <span
-                data-scroll-to="work"
-                class="text-gray-600 hover:text-black cursor-pointer"
-              >
-                Work
-              </span>
-              <span
-                data-scroll-to="projects"
-                class="text-gray-600 hover:text-black cursor-pointer"
-              >
-                Projects
-              </span>
-              <span
-                data-scroll-to="reading"
-                class="text-gray-600 hover:text-black cursor-pointer"
-              >
-                Reading
-              </span>
-            </div>
-          </div>
-        </div>
-        <p class="text-sm text-gray-700 leading-relaxed mb-8">
-          At work I'm implementing and iterating on internal AI systems. In my
-          free time, I'm building notmg, a top down shooter
-          <em>heavily</em> inspired by Realm of the Mad God. When I'm not staring
-          at my computer, you can find me on top of a boulder somewhere.
-        </p>
-        <div class="mb-8">
-          <div class="flex flex-row gap-6 text-sm flex-wrap">
-            <a
-              href="mailto:me@ncashin.dev"
-              class="font-medium text-gray-800 underline underline-offset-2 hover:text-black focus:text-black transition-colors"
-            >
-              me@ncashin.dev
-            </a>
-            <a
-              href="https://github.com/ncashin"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="font-medium text-gray-800 underline underline-offset-2 hover:text-black focus:text-black transition-colors"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://linkedin.com/in/ncashin"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="font-medium text-gray-800 underline underline-offset-2 hover:text-black focus:text-black transition-colors"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://twitter.com/ncashin"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="font-medium text-gray-800 underline underline-offset-2 hover:text-black focus:text-black transition-colors"
-            >
-              Twitter
-            </a>
-          </div>
-        </div>
-        {
-          allPosts.length > 0 && (
-            <div>
-              <h2 id="posts" class="text-xl font-semibold mb-6">
-                Posts
-              </h2>
-              <div class="flex flex-col gap-y-2">
-                {allPosts.map((post) => (
-                  <p>
-                    <a
-                      href={"/404"}
-                      class="text-sm text-gray-600 underline hover:text-black"
-                    >
-                      {post.title}
-                    </a>
-                  </p>
-                ))}
-              </div>
-            </div>
-          )
-        }
+  <main class="w-full relative pt-16">
+    <HeroSection posts={allPosts} />
+
+    <section class={sectionClass}>
+      <div class={containerClass}>
+        <WorkSection />
       </div>
     </section>
 
-    <!-- Work Section -->
-    <section
-      class="pl-11 pr-12 md:pl-7 md:pr-7 pt-32 pb-24 max-w-2xl mx-auto border-t border-gray-200"
-    >
-      <h2 id="work" class="text-xl font-semibold mb-16 mt-4">Work</h2>
-
-      <!-- Spellbook -->
-      <div class="mb-16 flex flex-col">
-        <div class="flex flex-row items-center gap-6 mb-8">
-          <div class="w-8 flex-shrink-0">
-            <img src="/logos/spellbook.svg" alt="Spellbook" class="w-8 h-8" />
-          </div>
-          <h3 class="text-lg font-semibold mt-0.5">
-            <a
-              href="https://spellbook.legal/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hover:opacity-70"
-            >
-              Spellbook
-            </a>
-          </h3>
-        </div>
-
-        <div class="ml-14 space-y-10">
-          <div class="flex flex-col gap-4">
-            <p class="text-sm font-medium">AI Operations Lead</p>
-            <p class="text-sm text-gray-600">Now</p>
-            <p class="text-sm text-gray-600">
-              React, TypeScript, Node.JS, MongoDB
-            </p>
-          </div>
-
-          <div class="flex flex-col gap-4">
-            <p class="text-sm font-medium">Software Developer</p>
-            <p class="text-sm text-gray-600">September 2025 - December 2025</p>
-            <p class="text-sm text-gray-600">
-              React, TypeScript, Node.JS, MongoDB
-            </p>
-            <p class="text-sm text-gray-600">
-              Continued work from prior position
-            </p>
-          </div>
-
-          <div class="flex flex-col gap-4">
-            <p class="text-sm font-medium">
-              Associate Software Developer - Internship
-            </p>
-            <p class="text-sm text-gray-600">May 2025 - August 2025</p>
-            <p class="text-sm text-gray-600">
-              React, TypeScript, Node.JS, MongoDB
-            </p>
-            <p class="text-sm text-gray-600">
-              Worked on Spellbook Associate the #1 AI Agent for Contract Law
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- C-CORE -->
-      <div class="mb-16 flex flex-col">
-        <div class="flex flex-row items-center gap-6 mb-8">
-          <div class="w-8 flex-shrink-0">
-            <img src="/logos/c-core.jpg" alt="C-CORE" class="w-8 h-8" />
-          </div>
-          <h3 class="text-lg font-semibold mt-0.5">
-            <a
-              href="https://c-core.ca/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hover:opacity-70"
-            >
-              C-CORE
-            </a>
-          </h3>
-        </div>
-
-        <div class="ml-14 space-y-10">
-          <div class="flex flex-col gap-4">
-            <p class="text-sm font-medium">Junior Software Developer</p>
-            <p class="text-sm text-gray-600">September 2024 - December 2024</p>
-            <p class="text-sm text-gray-600">
-              React, TypeScript, Python, FastAPI, PostgreSQL, PostGIS
-            </p>
-            <p class="text-sm text-gray-600">
-              Continued work from prior position
-            </p>
-          </div>
-
-          <div class="flex flex-col gap-4">
-            <p class="text-sm font-medium">Student Software Developer</p>
-            <p class="text-sm text-gray-600">May 2024 - August 2024</p>
-            <p class="text-sm text-gray-600">
-              React, TypeScript, Python, FastAPI, PostgreSQL, PostGIS
-            </p>
-            <p class="text-sm text-gray-600">
-              Developed a React web application using geospatial libraries
-              (Turf, GDAL, etc.) and proprietary data to support GIS analysts
-              and their workflow.
-            </p>
-            <p class="text-sm text-gray-600">
-              Worked with a Python backend to log performance metrics, ensuring
-              satisfaction of project and contract requirements.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section
-      class="pl-11 pr-12 md:pl-7 md:pr-7 pt-32 pb-24 max-w-2xl mx-auto border-t border-gray-200"
-    >
-      <h2 id="projects" class="text-xl font-semibold mb-16 mt-4">Projects</h2>
-
-      <!-- notmg -->
-      <div class="mb-16 flex flex-col">
-        <div class="flex flex-row items-center gap-6 mb-4">
-          <div class="w-8 flex-shrink-0">
-            <img src="/logos/notmg-logo.png" alt="notmg" class="w-8 h-8" />
-          </div>
-          <h3 class="text-lg font-semibold mt-0.5">
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hover:opacity-70"
-            >
-              notmg
-            </a>
-          </h3>
-        </div>
-
-        <div class="ml-14 space-y-10">
-          <div class="flex flex-col gap-4">
-            <p class="text-sm text-gray-600">Forever :(</p>
-            <p class="text-sm text-gray-600">
-              Vanilla JS, Bun, WebSockets, My Hopes and Dreams
-            </p>
-            <p class="text-sm text-gray-600">
-              A multiplayer top down shooter <em>heavily</em> inspired by Realm of
-              the Mad God
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- doit 2025 hackathon -->
-      <div class="mb-16 flex flex-col">
-        <div class="flex flex-row items-center gap-6 mb-4">
-          <div class="w-8 flex-shrink-0">
-            <img
-              src="/logos/doit-hackathon.png"
-              alt="doit 2025 hackathon"
-              class="w-8 h-8"
-            />
-          </div>
-          <h3 class="text-lg font-semibold mt-0.5">
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hover:opacity-70"
-            >
-              doit 2025 hackathon
-            </a>
-          </h3>
-        </div>
-
-        <div class="ml-14 space-y-10">
-          <div class="flex flex-col gap-4">
-            <p class="text-sm text-gray-600">June 2025</p>
-            <p class="text-sm text-gray-600">Python, Flask, React, Bluetooth</p>
-            <p class="text-sm text-gray-600">
-              Created Spine Align, a smart posture corrector, with friends.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Reading Section -->
-    <section
-      class="pl-11 pr-12 md:pl-7 md:pr-7 pt-16 pb-64 max-w-2xl mx-auto border-t border-gray-200"
-    >
-      <h2 id="reading" class="text-xl font-semibold mb-12 mt-4">Reading</h2>
-
-      <div class="space-y-20">
-        <div class="flex flex-col gap-4">
-          <p class="text-sm font-medium">Currently</p>
-          <p class="text-sm text-gray-600">
-            <em>The Three-Body Problem</em> by Liu Cixin
-          </p>
-        </div>
-
-        <div class="flex flex-col gap-4">
-          <p class="text-sm font-medium">Recently Finished</p>
-          <p class="text-sm text-gray-600">
-            <em>Designing Data-Intensive Applications</em> by Martin Kleppmann
-          </p>
-          <p class="text-sm text-gray-600">
-            <em>Structure and Interpretation of Computer Programs</em> by Abelson
-            & Sussman
-          </p>
-        </div>
-
-        <div class="flex flex-col gap-4">
-          <p class="text-sm font-medium">Articles & Reading</p>
-          <p class="text-sm text-gray-600">
-            <a
-              href="https://blog.scottstevenson.net/p/modular-products-suck"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="underline hover:text-black"
-            >
-              Modular Products Suck
-            </a>
-          </p>
-          <p class="text-sm text-gray-600">
-            <a
-              href="https://www.stilldrinking.org/programming-sucks"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="underline hover:text-black"
-            >
-              Programming Sucks
-            </a>
-          </p>
-        </div>
+    <section class={sectionClass}>
+      <div class={containerClass}>
+        <ReadingSection />
       </div>
     </section>
   </main>
@@ -380,4 +56,102 @@ const allPosts = [...mdPosts, ...wipPosts].map((post: any) => {
       }
     });
   });
+
+  const jobTitleElement = document.getElementById("job-title");
+  if (jobTitleElement) {
+    const jobTitle = "AI Operations Lead";
+    const charSpans: HTMLSpanElement[] = [];
+
+    const computedStyle = window.getComputedStyle(jobTitleElement);
+    const fontSize = computedStyle.fontSize;
+    const fontWeight = computedStyle.fontWeight;
+    const color = computedStyle.color;
+
+    for (let i = 0; i < jobTitle.length; i++) {
+      const char = jobTitle[i];
+      const charSpan = document.createElement("span");
+      charSpan.className = "decode-char";
+      charSpan.textContent = char === " " ? "\u00A0" : char;
+      charSpan.style.fontFamily = "'SplatoonAlternaFinal', sans-serif";
+      charSpan.style.fontSize = fontSize;
+      charSpan.style.fontWeight = fontWeight;
+      charSpan.style.color = color;
+      charSpan.style.display = "inline-block";
+      charSpan.style.transition =
+        "font-family 0.1s ease, transform 0.05s ease, opacity 0.05s ease, color 0.05s ease";
+      jobTitleElement.appendChild(charSpan);
+      charSpans.push(charSpan);
+    }
+
+    const indices = Array.from({ length: charSpans.length }, (_, i) => i);
+    for (let i = indices.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+
+    let currentIndex = 0;
+    const addGlitchEffect = (span: HTMLSpanElement) => {
+      const glitchCount = Math.floor(Math.random() * 3) + 2;
+      let iteration = 0;
+
+      const glitch = () => {
+        if (iteration < glitchCount) {
+          const shiftX = (Math.random() - 0.5) * 4;
+          const shiftY = (Math.random() - 0.5) * 3;
+          const rotation = (Math.random() - 0.5) * 8;
+
+          const opacity = Math.random() > 0.5 ? 0.3 : 1;
+
+          const colorShift = Math.random() > 0.7;
+          const glitchColor = colorShift
+            ? `rgb(${Math.floor(Math.random() * 50)}, ${Math.floor(Math.random() * 50)}, ${Math.floor(Math.random() * 50)})`
+            : color;
+
+          span.style.transform = `translate(${shiftX}px, ${shiftY}px) rotate(${rotation}deg)`;
+          span.style.opacity = opacity.toString();
+          span.style.color = glitchColor;
+
+          setTimeout(
+            () => {
+              span.style.transform = "translate(0, 0) rotate(0deg)";
+              span.style.opacity = "1";
+              span.style.color = color;
+              iteration++;
+              if (iteration < glitchCount) {
+                setTimeout(glitch, Math.random() * 15 + 5);
+              }
+            },
+            Math.random() * 20 + 10
+          );
+        }
+      };
+
+      glitch();
+    };
+
+    const decodeCharacter = () => {
+      if (currentIndex < indices.length) {
+        const span = charSpans[indices[currentIndex]];
+
+        addGlitchEffect(span);
+
+        setTimeout(
+          () => {
+            span.style.fontFamily = "inherit";
+            span.style.fontSize = fontSize;
+            span.style.fontWeight = fontWeight;
+            span.style.color = color;
+            span.style.transform = "translate(0, 0) rotate(0deg)";
+            span.style.opacity = "1";
+          },
+          Math.random() * 40 + 20
+        );
+
+        currentIndex++;
+        setTimeout(decodeCharacter, 25);
+      }
+    };
+
+    setTimeout(decodeCharacter, 100);
+  }
 </script>
