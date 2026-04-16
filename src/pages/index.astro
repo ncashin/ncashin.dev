@@ -1,159 +1,19 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import HeroSection from "../components/HeroSection.astro";
-import WorkSection from "../components/WorkSection.astro";
+import SiteNav from "../components/SiteNav.astro";
+import AboutSection from "../components/AboutSection.astro";
+import ExperienceSection from "../components/ExperienceSection.astro";
 import ProjectsSection from "../components/ProjectsSection.astro";
-import ReadingSection from "../components/ReadingSection.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 
-const allPosts = [
-  ...Object.values(import.meta.glob("../posts/*.md", { eager: true })),
-  ...(import.meta.env.DEV
-    ? Object.values(import.meta.glob("../posts/wip/*.md", { eager: true }))
-    : []),
-].map((post: any) => {
-  const slug = post.file.split("/").pop().replace(/\.md$/, "");
-  return {
-    slug,
-    title: post.frontmatter.title,
-    description: post.frontmatter.description,
-    url: `/posts/${slug}`,
-  };
-});
-
-const sectionClass = "pl-4 pr-4 md:pl-4 md:pr-4  max-w-lg mx-auto";
-const containerClass =
-  "bg-white/95 backdrop-blur-sm rounded-lg p-4 border-gray-200 pt-0 pb-0";
+const title = "Natalie Cashin";
+const description = "Product manager who designs and builds";
 ---
 
-<BaseLayout>
-  <main class="w-full relative pt-16 pb-16">
-    <HeroSection posts={allPosts} />
-
-    <section class={sectionClass}>
-      <div class={containerClass}>
-        <WorkSection />
-      </div>
-    </section>
-
-    <section class={sectionClass}>
-      <div class={containerClass}>
-        <ReadingSection />
-      </div>
-    </section>
-  </main>
+<BaseLayout title={title} description={description}>
+  <SiteNav />
+  <AboutSection />
+  <ExperienceSection />
+  <ProjectsSection />
+  <SiteFooter />
 </BaseLayout>
-
-<script>
-  document.querySelectorAll("[data-scroll-to]").forEach((element) => {
-    element.addEventListener("click", (e) => {
-      e.preventDefault();
-      const targetId = element.getAttribute("data-scroll-to");
-      if (targetId) {
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-          targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }
-    });
-  });
-
-  const jobTitleElement = document.getElementById("job-title");
-  if (jobTitleElement) {
-    const jobTitle = "AI Operations Lead";
-    const charSpans: HTMLSpanElement[] = [];
-
-    const computedStyle = window.getComputedStyle(jobTitleElement);
-    const fontSize = computedStyle.fontSize;
-    const fontWeight = computedStyle.fontWeight;
-    const color = computedStyle.color;
-
-    jobTitleElement.textContent = "";
-
-    for (let i = 0; i < jobTitle.length; i++) {
-      const char = jobTitle[i];
-      const charSpan = document.createElement("span");
-      charSpan.className = "decode-char";
-      charSpan.textContent = char === " " ? "\u00A0" : char;
-      charSpan.style.fontFamily = "'SplatoonAlternaFinal', sans-serif";
-      charSpan.style.fontSize = fontSize;
-      charSpan.style.fontWeight = fontWeight;
-      charSpan.style.color = color;
-      charSpan.style.display = "inline-block";
-      charSpan.style.transition =
-        "font-family 0.1s ease, transform 0.05s ease, opacity 0.05s ease, color 0.05s ease";
-      jobTitleElement.appendChild(charSpan);
-      charSpans.push(charSpan);
-    }
-
-    const indices = Array.from({ length: charSpans.length }, (_, i) => i);
-    for (let i = indices.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [indices[i], indices[j]] = [indices[j], indices[i]];
-    }
-
-    let currentIndex = 0;
-    const addGlitchEffect = (span: HTMLSpanElement) => {
-      const glitchCount = Math.floor(Math.random() * 3) + 2;
-      let iteration = 0;
-
-      const glitch = () => {
-        if (iteration < glitchCount) {
-          const shiftX = (Math.random() - 0.5) * 4;
-          const shiftY = (Math.random() - 0.5) * 3;
-          const rotation = (Math.random() - 0.5) * 8;
-
-          const opacity = Math.random() > 0.5 ? 0.3 : 1;
-
-          const colorShift = Math.random() > 0.7;
-          const glitchColor = colorShift
-            ? `rgb(${Math.floor(Math.random() * 50)}, ${Math.floor(Math.random() * 50)}, ${Math.floor(Math.random() * 50)})`
-            : color;
-
-          span.style.transform = `translate(${shiftX}px, ${shiftY}px) rotate(${rotation}deg)`;
-          span.style.opacity = opacity.toString();
-          span.style.color = glitchColor;
-
-          setTimeout(
-            () => {
-              span.style.transform = "translate(0, 0) rotate(0deg)";
-              span.style.opacity = "1";
-              span.style.color = color;
-              iteration++;
-              if (iteration < glitchCount) {
-                setTimeout(glitch, Math.random() * 15 + 5);
-              }
-            },
-            Math.random() * 20 + 10
-          );
-        }
-      };
-
-      glitch();
-    };
-
-    const decodeCharacter = () => {
-      if (currentIndex < indices.length) {
-        const span = charSpans[indices[currentIndex]];
-
-        addGlitchEffect(span);
-
-        setTimeout(
-          () => {
-            span.style.fontFamily = "inherit";
-            span.style.fontSize = fontSize;
-            span.style.fontWeight = fontWeight;
-            span.style.color = color;
-            span.style.transform = "translate(0, 0) rotate(0deg)";
-            span.style.opacity = "1";
-          },
-          Math.random() * 40 + 20
-        );
-
-        currentIndex++;
-        setTimeout(decodeCharacter, 25);
-      }
-    };
-
-    setTimeout(decodeCharacter, 100);
-  }
-</script>

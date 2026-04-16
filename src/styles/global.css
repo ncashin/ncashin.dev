@@ -1,316 +1,151 @@
-@font-face {
-  font-family: "SplatoonAlternaFinal";
-  src: url("/fonts/SplatoonAlternaFinal.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+@import "tailwindcss";
+
+@utility text-about-copy {
+  margin: 0;
+  font-weight: 450;
+  letter-spacing: -0.005rem;
+  color: hsl(var(--secondary-foreground));
 }
 
-* {
-  margin: 0;
-  padding: 0;
+/** Default browser-style link (system blue + underline); overrides global `a` reset */
+@utility link-macos {
+  color: rgb(0, 102, 204);
+  color: LinkText;
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+/** Inline prose link (matches hussam.fyi `.styled-link`) */
+.styled-link {
+  color: var(--hyperlink-color);
+  font-weight: inherit;
+  line-height: inherit;
+  transition: color 0.2s;
+  display: inline;
+  position: relative;
+}
+
+.styled-link:hover {
+  color: var(--hyperlink-hover);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.55s ease forwards;
+  animation-delay: var(--stagger, 0ms);
+}
+
+@font-face {
+  font-family: GeistSans;
+  src: url("/fonts/Geist-Variable.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 100 900;
+}
+@font-face {
+  font-family: GeistMono;
+  src: url("/fonts/GeistMono-Variable.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 100 900;
+}
+
+:root {
+  --font-geist-sans: "GeistSans", system-ui, sans-serif;
+  --font-geist-mono: "GeistMono", ui-monospace, monospace;
+  --background: 0 0% 100%;
+  --foreground: 0 0% 9%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 9%;
+  --primary: 0 0% 9%;
+  --primary-foreground: 0 0% 80%;
+  --secondary: 220 14% 96%;
+  --secondary-foreground: 0 0% 35%;
+  --muted: 220 14% 96%;
+  --muted-foreground: 0 0% 60%;
+  --accent: 220 13% 91%;
+  --accent-foreground: 0 0% 9%;
+  --border: 220 13% 91%;
+  --input: 220 13% 91%;
+  --ring: 218 11% 65%;
+  --rounded: 0.5rem;
+  --body-color: #111;
+  --body-bg: #fdfdfc;
+  --heading-color: #000000d9;
+  --heading-secondary: #000000c7;
+  --heading-tertiary: #000000b3;
+  --text-body: #000c;
+  --text-muted: #0006;
+  --hyperlink-color: #2480ed;
+  --hyperlink-hover: #74b1fd;
+  --selection-color: #111;
+  --selection-bg: #ededed;
+  --focus-color: #007aff80;
+  --border-subtle: #00000014;
+  --border-light: #0000000f;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+  border-color: hsl(var(--border));
+}
+
+::selection {
+  color: var(--selection-color);
+  background: var(--selection-bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-color);
 }
 
 html {
+  color-scheme: light;
+  background: var(--body-bg);
+  color: var(--body-color);
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100%;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
+  margin: 0;
+  min-height: 100%;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-geist-sans);
+  font-size: 15px;
   line-height: 1.5;
-  color: #000;
-  overflow-x: hidden;
-  width: 100%;
-  max-width: 100vw;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
-  text-decoration: none;
   color: inherit;
-  transition: opacity 0.15s ease, color 0.15s ease;
+  text-decoration: none;
 }
 
-a:hover {
-  opacity: 0.7;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Circle Container and Rainbow Ring */
-.circle-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 0;
-}
-
-.rainbow-ring {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
-  background: conic-gradient(
-    from 0deg,
-    #ff3366,
-    #ff6b35,
-    #ffd23f,
-    #06ffa5,
-    #4ecdc4,
-    #45b7d1,
-    #96ceb4,
-    #ffeaa7,
-    #dda15e,
-    #bc4749,
-    #ff3366
-  );
-  position: relative;
-  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.25))
-    drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15))
-    drop-shadow(0 0 20px rgba(255, 255, 255, 0.1)) saturate(1.3) contrast(1.15)
-    brightness(1.05);
-  mask: radial-gradient(
-    circle,
-    transparent 18px,
-    black 18px,
-    black 24px,
-    transparent 24px
-  );
-  -webkit-mask: radial-gradient(
-    circle,
-    transparent 18px,
-    black 18px,
-    black 24px,
-    transparent 24px
-  );
-}
-
-.rainbow-ring::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.15) 0%,
-    rgba(255, 255, 255, 0.05) 50%,
-    transparent 70%
-  );
-  z-index: -1;
-  filter: blur(12px);
-  pointer-events: none;
-}
-
-/* Scroll margin for anchor links */
-h2[id] {
-  scroll-margin-top: 3rem;
-}
-
-/* Markdown Content Styles */
-.markdown-content {
-  font-size: 0.875rem;
-  line-height: 1.625;
-  color: #374151;
-}
-
-.markdown-content p {
-  font-size: 0.875rem;
-  line-height: 1.625;
-  color: #374151;
-  margin-bottom: 0;
-}
-
-.markdown-content p + p {
-  margin-top: 0.625rem;
-}
-
-.markdown-content h1,
-.markdown-content h2,
-.markdown-content h3,
-.markdown-content h4,
-.markdown-content h5,
-.markdown-content h6 {
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: 500;
-  color: #374151;
-  margin-top: 1.5rem;
-  margin-bottom: 0.625rem;
-}
-
-.markdown-content ul,
-.markdown-content ol {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  color: #374151;
-  margin-top: 1.5rem;
-  margin-bottom: 0;
-  padding-left: 1.25rem;
-}
-
-.markdown-content li {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  color: #374151;
-  margin-bottom: 0.625rem;
-}
-
-.markdown-content ul li {
-  list-style-type: disc;
-}
-
-.markdown-content ol li {
-  list-style-type: decimal;
-}
-
-.markdown-content blockquote {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  color: #4b5563;
-  margin-top: 1.5rem;
-  margin-bottom: 0;
-  padding-left: 1rem;
-  border-left: 2px solid #e5e7eb;
-}
-
-.markdown-content blockquote p {
-  margin-bottom: 0.625rem;
-}
-
-.markdown-content blockquote p:last-child {
-  margin-bottom: 0;
-}
-
-.markdown-content pre {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  color: #374151;
-  margin-top: 1.5rem;
-  margin-bottom: 0;
-  padding: 1rem;
-  background-color: #f9fafb;
-  border-radius: 0.25rem;
-  overflow-x: auto;
-}
-
-.markdown-content code {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  background-color: #f9fafb;
-  padding: 0.125rem 0.25rem;
-  border-radius: 0.25rem;
-}
-
-.markdown-content pre code {
-  background-color: transparent;
-  padding: 0;
-}
-
-.markdown-content a {
-  color: #4b5563;
-  text-decoration: underline;
-}
-
-.markdown-content a:hover {
-  color: #000;
-}
-
-.markdown-content strong {
-  font-weight: 500;
-}
-
-.markdown-content em {
-  font-style: italic;
-}
-
-.markdown-content hr {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+button {
+  font: inherit;
+  cursor: pointer;
   border: none;
-  border-top: 1px solid #e5e7eb;
+  background: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.markdown-content table {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  color: #374151;
-  margin-top: 1.5rem;
-  margin-bottom: 0;
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.markdown-content th,
-.markdown-content td {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  color: #374151;
-  padding: 0.5rem;
-  border: 1px solid #e5e7eb;
-}
-
-.markdown-content th {
-  font-weight: 500;
-}
-
-.markdown-content img {
-  margin-top: 1.5rem;
-  margin-bottom: 0;
+img,
+svg,
+video {
+  display: block;
   max-width: 100%;
   height: auto;
-}
-
-/* Glitch effects for job title decoding */
-@keyframes glitch-flicker {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.3;
-  }
-}
-
-@keyframes glitch-color-shift {
-  0%,
-  100% {
-    color: inherit;
-  }
-  25% {
-    color: #ff3366;
-  }
-  50% {
-    color: #06ffa5;
-  }
-  75% {
-    color: #4ecdc4;
-  }
-}
-
-@keyframes glitch-shake {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-1px);
-  }
-  75% {
-    transform: translateX(1px);
-  }
-}
-
-.decode-char.glitching {
-  animation: glitch-flicker 0.15s ease-in-out infinite,
-    glitch-shake 0.1s ease-in-out infinite;
 }

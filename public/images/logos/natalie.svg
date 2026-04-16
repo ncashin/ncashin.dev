@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <linearGradient id="shader-logo-wbr-face-l" x1="16" y1="3" x2="5" y2="26" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5b5a72"/>
+      <stop offset="0.45" stop-color="#3d3c52"/>
+      <stop offset="1" stop-color="#1c1b28"/>
+    </linearGradient>
+    <linearGradient id="shader-logo-wbr-face-r" x1="16" y1="3" x2="27" y2="26" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4f4e68"/>
+      <stop offset="0.5" stop-color="#353445"/>
+      <stop offset="1" stop-color="#14131c"/>
+    </linearGradient>
+    <linearGradient id="shader-logo-wbr-face-b" x1="16" y1="27" x2="16" y2="18" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0f0e16"/>
+      <stop offset="1" stop-color="#06060a"/>
+    </linearGradient>
+    <linearGradient id="shader-logo-wbr-rim" x1="16" y1="2.5" x2="16" y2="11" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#a8a0e0" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#8b7fd4" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shader-logo-wbr-soft" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="1" stdDeviation="0.8" flood-color="#0a0a12" flood-opacity="0.35" result="drop"/>
+      <feMerge>
+        <feMergeNode in="drop"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="shader-logo-wbr-clip">
+      <rect width="32" height="32" rx="5" ry="5"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#shader-logo-wbr-clip)">
+    <rect width="32" height="32" rx="5" ry="5" fill="#ffffff"/>
+    <g filter="url(#shader-logo-wbr-soft)">
+      <path d="M2.8 27.5 L29.2 27.5 L16 19.17 Z" fill="url(#shader-logo-wbr-face-b)"/>
+      <path d="M16 2.5 L2.8 27.5 L16 19.17 Z" fill="url(#shader-logo-wbr-face-l)"/>
+      <path d="M16 2.5 L29.2 27.5 L16 19.17 Z" fill="url(#shader-logo-wbr-face-r)"/>
+      <path d="M16 2.5 L12.2 9.8 L16 8.6 L19.8 9.8 Z" fill="url(#shader-logo-wbr-rim)"/>
+    </g>
+  </g>
+</svg>

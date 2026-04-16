@@ -1,68 +1,39 @@
----
+<section id="personal-projects" class="flex flex-col">
+  <h2
+    class="pb-4 text-sm tracking-tight text-[hsl(var(--secondary-foreground))]"
+  >
+    Projects
+  </h2>
 
----
-
-<h2 id="projects" class="text-xl font-semibold mt-4">Projects</h2>
-
-<div class="flex flex-col">
-  <div class="flex flex-row items-center gap-4 mb-4">
-    <div class="w-8 flex-shrink-0">
-      <img src="/logos/notmg-logo.png" alt="notmg" class="w-8 h-8" />
-    </div>
-    <h3 class="text-lg font-semibold mt-0.5">
-      <a
-        href="#"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="hover:opacity-70"
+  <div class="flex flex-col gap-6">
+    <div class="flex flex-col gap-2">
+      <span class="text-base font-medium text-[hsl(var(--primary))]"
+        >GameIDE</span
       >
-        notmg
-      </a>
-    </h3>
-  </div>
-
-  <div class="ml-14 space-y-10">
-    <div class="flex flex-col gap-4">
-      <p class="text-sm text-gray-600">Forever :(</p>
-      <p class="text-sm text-gray-600">
-        Vanilla JS, Bun, WebSockets, My Hopes and Dreams
-      </p>
-      <p class="text-sm text-gray-600">
-        A multiplayer top down shooter <em>heavily</em> inspired by Realm of the Mad
-        God
+      <p class="text-sm text-[hsl(var(--secondary-foreground))]">
+        Game development framework with a focus on AI tooling and peer-to-peer
+        netcode.{" "}
+        <a
+          class="styled-link"
+          href="https://gameide.app"
+          target="_blank"
+          rel="noopener noreferrer">gameide.app</a
+        >
       </p>
     </div>
-  </div>
-</div>
 
-<div class="mb-16 flex flex-col">
-  <div class="flex flex-row items-center gap-4 mb-4">
-    <div class="w-8 flex-shrink-0">
-      <img
-        src="/logos/doit-hackathon.png"
-        alt="doit 2025 hackathon"
-        class="w-8 h-8"
-      />
-    </div>
-    <h3 class="text-lg font-semibold mt-0.5">
-      <a
-        href="#"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="hover:opacity-70"
+    <div
+      class="overflow-hidden rounded-xl bg-black shadow-sm ring-1 ring-[hsl(var(--foreground)/0.1)]"
+    >
+      <video
+        class="aspect-video w-full object-contain"
+        controls
+        playsinline
+        preload="metadata"
+        poster="/images/projects/gameide-poster.jpg"
       >
-        doit 2025 hackathon
-      </a>
-    </h3>
-  </div>
-
-  <div class="ml-14 space-y-10">
-    <div class="flex flex-col gap-4">
-      <p class="text-sm text-gray-600">June 2025</p>
-      <p class="text-sm text-gray-600">Python, Flask, React, Bluetooth</p>
-      <p class="text-sm text-gray-600">
-        Created Spine Align, a smart posture corrector, with friends.
-      </p>
+        <source src="/images/projects/gameide.mp4" type="video/mp4" />
+      </video>
     </div>
   </div>
-</div>
+</section>
