@@ -4,15 +4,20 @@ import "../styles/global.css";
 interface Props {
   title: string;
   description: string;
-  /** Preloads the header logo; match `SiteNav` `logoSrc` when overridden. */
   navLogoPreload?: string;
+  /** Path (site root–relative) for link previews, e.g. /images/og.png */
+  ogImagePath?: string;
 }
 
 const {
   title,
   description,
   navLogoPreload = "/images/logos/natalie.svg",
+  ogImagePath = "/images/logos/natalie-no-bg.svg",
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(ogImagePath, canonicalURL.origin).href;
 ---
 
 <!doctype html>
@@ -37,6 +42,17 @@ const {
     <meta name="theme-color" content="#fdfdfc" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL.href} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:site_name" content="Natalie Cashin" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
   </head>
   <body>
     <div class="mx-auto flex max-w-xl px-8 pb-0 pt-12">
