@@ -10,8 +10,12 @@ const title = "Natalie Cashin";
 const description = "Person who builds";
 ---
 
-<BaseLayout title={title} description={description}>
-  <SiteNav />
+<BaseLayout
+  title={title}
+  description={description}
+  navLogoPreload="/images/logos/natalie-no-bg.svg"
+>
+  <SiteNav logoSrc="/images/logos/natalie-no-bg.svg" />
   <AboutSection />
   <ExperienceSection />
   <ProjectsSection />

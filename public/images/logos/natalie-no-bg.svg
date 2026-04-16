@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<!-- Face-only variant of natalie.svg (no background square) -->
 
 <svg
    width="80mm"
@@ -9,29 +9,9 @@
    id="svg1"
    xml:space="preserve"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg"><defs
-     id="defs1"><linearGradient
-       id="swatch38"><stop
-         style="stop-color:#c8c8c8;stop-opacity:1;"
-         offset="0"
-         id="stop38" /></linearGradient><linearGradient
-       id="swatch37"><stop
-         style="stop-color:#c8c8c8;stop-opacity:1;"
-         offset="0"
-         id="stop37" /></linearGradient><linearGradient
-       id="swatch28"><stop
-         style="stop-color:#c8c8c8;stop-opacity:1;"
-         offset="0"
-         id="stop28" /></linearGradient></defs><g
+   xmlns:svg="http://www.w3.org/2000/svg"><g
      id="layer1"
-     transform="translate(-88.466799,-37.546575)"><rect
-       style="fill:#f9f9f9;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-dasharray:none"
-       id="rect48"
-       width="80"
-       height="80"
-       x="88.466797"
-       y="37.546574"
-       ry="0" /><ellipse
+     transform="translate(-88.466799,-37.546575)"><ellipse
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:10;stroke-dasharray:none"
        id="path46-58"
        cx="103.55785"

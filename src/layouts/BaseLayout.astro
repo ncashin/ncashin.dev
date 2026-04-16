@@ -4,9 +4,15 @@ import "../styles/global.css";
 interface Props {
   title: string;
   description: string;
+  /** Preloads the header logo; match `SiteNav` `logoSrc` when overridden. */
+  navLogoPreload?: string;
 }
 
-const { title, description } = Astro.props;
+const {
+  title,
+  description,
+  navLogoPreload = "/images/logos/natalie.svg",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -21,7 +27,7 @@ const { title, description } = Astro.props;
       type="font/woff2"
       crossorigin
     />
-    <link rel="preload" as="image" href="/images/logos/natalie.svg" />
+    <link rel="preload" as="image" href={navLogoPreload} />
     <link rel="preload" as="image" href="/images/logos/x.svg" />
     <link rel="preload" as="image" href="/images/logos/mail.svg" />
     <link rel="preload" as="image" href="/images/logos/spellbook.svg" />
