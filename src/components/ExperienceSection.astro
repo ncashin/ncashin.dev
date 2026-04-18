@@ -1,4 +1,10 @@
 ---
+/**
+ * C-CORE mark scale in the logo box. Spellbook’s SVG uses a ~10×10 region in 16×16 (~62.5%);
+ * C-CORE is slightly larger (12/16) so the ring stays readable.
+ */
+const cCoreMarkFraction = 12 / 16;
+
 const entries = [
   {
     company: "Spellbook",
@@ -7,6 +13,7 @@ const entries = [
     logoAlt: "Spellbook",
     title: "Software Developer / AI Operations Lead",
     period: "2025 - 2026",
+    logoInsetFraction: 1,
   },
   {
     company: "C-CORE",
@@ -15,8 +22,9 @@ const entries = [
     logoAlt: "C-CORE",
     title: "Intern / Junior Software Developer",
     period: "2024",
+    logoInsetFraction: cCoreMarkFraction,
   },
-];
+] as const;
 ---
 
 <section id="experience" class="flex flex-col">
@@ -32,18 +40,36 @@ const entries = [
           href={e.href}
           target="_blank"
           rel="noopener noreferrer"
-          class="-mx-[0.32rem] flex flex-row items-center justify-between gap-4 px-2 py-1.5 text-sm font-medium text-[hsl(var(--foreground))] no-underline transition-colors hover:bg-[hsl(var(--muted))]"
+          class="-mx-[0.35rem] flex flex-row items-center justify-between gap-4 px-2 py-1.5 text-sm font-medium text-[hsl(var(--foreground))] no-underline transition-colors hover:bg-[hsl(var(--muted))]"
         >
-          <div class="flex min-w-0 flex-row flex-wrap items-center gap-x-3 gap-y-1.5">
-            <span class="inline-flex shrink-0 items-center gap-3">
-              <img
-                src={e.logo}
-                alt=""
-                width="20"
-                height="20"
-                decoding="async"
-                class="h-5 w-5 shrink-0"
-              />
+          <div class="flex min-w-0 flex-row flex-wrap items-center gap-x-3.5 gap-y-1.5">
+            <span class="inline-flex shrink-0 items-center gap-2.5">
+              <span
+                class:list={[
+                  "inline-flex h-5 w-5 shrink-0 items-center justify-center",
+                  e.logoInsetFraction < 1 && "bg-[hsl(var(--background))]",
+                ]}
+              >
+                <img
+                  src={e.logo}
+                  alt=""
+                  width="20"
+                  height="20"
+                  decoding="async"
+                  class:list={[
+                    "shrink-0 object-contain",
+                    e.logoInsetFraction >= 1 ? "h-5 w-5" : "h-auto w-auto",
+                  ]}
+                  style={
+                    e.logoInsetFraction < 1
+                      ? {
+                          maxHeight: `${e.logoInsetFraction * 100}%`,
+                          maxWidth: `${e.logoInsetFraction * 100}%`,
+                        }
+                      : undefined
+                  }
+                />
+              </span>
               {e.company}
             </span>
             <span class="text-[hsl(var(--secondary-foreground))]">
