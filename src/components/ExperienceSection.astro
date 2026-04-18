@@ -29,7 +29,7 @@ const entries = [
 
 <section id="experience" class="flex flex-col">
   <h2
-    class="pb-4 text-sm tracking-tight text-[hsl(var(--secondary-foreground))]"
+    class="pb-5 text-sm tracking-tight text-[hsl(var(--secondary-foreground))]"
   >
     Experience
   </h2>
@@ -42,7 +42,7 @@ const entries = [
           rel="noopener noreferrer"
           class="-mx-[0.3575rem] flex flex-row items-center justify-between gap-4 pl-2 pr-2.5 py-1.5 text-sm font-medium text-[hsl(var(--foreground))] no-underline transition-colors hover:bg-[hsl(var(--muted))]"
         >
-          <div class="flex min-w-0 flex-row flex-wrap items-center gap-x-3.5 gap-y-1.5">
+          <div class="flex min-w-0 flex-row flex-wrap items-center gap-x-3 gap-y-1.5">
             <span class="inline-flex shrink-0 items-center gap-2.5">
               <span
                 class:list={[
@@ -70,7 +70,9 @@ const entries = [
                   }
                 />
               </span>
-              {e.company}
+              <span class:list={[e.company === "C-CORE" && "pl-px"]}>
+                {e.company}
+              </span>
             </span>
             <span class="text-[hsl(var(--secondary-foreground))]">
               {e.title}
