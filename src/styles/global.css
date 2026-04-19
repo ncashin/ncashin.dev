@@ -123,7 +123,7 @@ html {
   min-height: 100%;
   text-rendering: optimizeLegibility;
   font-family: var(--font-sans);
-  font-size: 106.25%;
+  font-size: 100%;
   quotes: "“" "”" "‘" "’";
 }
 
