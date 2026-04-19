@@ -3,8 +3,16 @@
 @utility text-about-copy {
   margin: 0;
   font-weight: 450;
-  letter-spacing: -0.005rem;
-  color: hsl(var(--secondary-foreground));
+  color: hsl(var(--foreground));
+}
+
+/** 14px / 12px UI tracking — apple.com `.button`, `.typography-caption`, `globalnav-link` */
+@utility tracking-apple-14 {
+  letter-spacing: var(--tracking-14);
+}
+
+@utility tracking-apple-12 {
+  letter-spacing: var(--tracking-12);
 }
 
 /** Default browser-style link (system blue + underline); overrides global `a` reset */
@@ -45,52 +53,50 @@
   animation-delay: var(--stagger, 0ms);
 }
 
-@font-face {
-  font-family: GeistSans;
-  src: url("/fonts/Geist-Variable.woff2") format("woff2");
-  font-display: swap;
-  font-weight: 100 900;
-}
-@font-face {
-  font-family: GeistMono;
-  src: url("/fonts/GeistMono-Variable.woff2") format("woff2");
-  font-display: swap;
-  font-weight: 100 900;
-}
-
 :root {
-  --font-geist-sans: "GeistSans", system-ui, sans-serif;
-  --font-geist-mono: "GeistMono", ui-monospace, monospace;
+  /* apple.com main.built.css — en-US stacks (SF Pro loads via apple.com on Safari; system fonts elsewhere) */
+  --font-sans: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  --font-display: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  --font-mono: "SF Mono", SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  /* apple.com main.built.css — light / theme-light (sk-* rgb → HSL for Tailwind) */
   --background: 0 0% 100%;
-  --foreground: 0 0% 9%;
+  --foreground: 240 3.33% 11.76%;
   --card: 0 0% 100%;
-  --card-foreground: 0 0% 9%;
-  --primary: 0 0% 9%;
-  --primary-foreground: 0 0% 80%;
-  --secondary: 220 14% 96%;
-  --secondary-foreground: 0 0% 35%;
-  --muted: 220 14% 96%;
-  --muted-foreground: 0 0% 60%;
-  --accent: 220 13% 91%;
-  --accent-foreground: 0 0% 9%;
-  --border: 220 13% 91%;
-  --input: 220 13% 91%;
-  --ring: 218 11% 65%;
+  --card-foreground: 240 3.33% 11.76%;
+  --primary: 240 3.33% 11.76%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 240 11.11% 96.47%;
+  --secondary-foreground: 240 2.22% 44.12%;
+  --muted: 240 11.11% 96.47%;
+  --muted-foreground: 240 2.11% 53.53%;
+  --accent: 240 12.2% 92%;
+  --accent-foreground: 240 3.33% 11.76%;
+  --border: 240 9.4% 87.45%;
+  --input: 240 9.4% 87.45%;
+  --ring: 210 100% 44.5%;
   --rounded: 0.5rem;
-  --body-color: #111;
-  --body-bg: #fdfdfc;
-  --heading-color: #000000d9;
-  --heading-secondary: #000000c7;
-  --heading-tertiary: #000000b3;
-  --text-body: #000c;
-  --text-muted: #0006;
-  --hyperlink-color: #2480ed;
-  --hyperlink-hover: #74b1fd;
-  --selection-color: #111;
-  --selection-bg: #ededed;
-  --focus-color: #007aff80;
-  --border-subtle: #00000014;
-  --border-light: #0000000f;
+  --body-color: rgb(29, 29, 31);
+  --body-bg: rgb(255, 255, 255);
+  --heading-color: rgb(29, 29, 31);
+  --heading-secondary: rgb(66, 66, 69);
+  --heading-tertiary: rgb(110, 110, 115);
+  --text-body: rgb(29, 29, 31);
+  --text-muted: rgb(134, 134, 139);
+  --hyperlink-color: rgb(0, 102, 204);
+  --hyperlink-hover: rgb(0, 118, 223);
+  --selection-color: rgb(29, 29, 31);
+  --selection-bg: rgb(237, 237, 239);
+  /* --sk-focus-color: #0071e3 */
+  --focus-color: #0071e399;
+  --border-subtle: rgb(0 0 0 / 0.08);
+  --border-light: rgb(0 0 0 / 0.06);
+  /* apple.com — letter-spacing by nominal size (main.built.css / globalheader.css) */
+  --tracking-17: -0.022em;
+  --tracking-14: -0.016em;
+  --tracking-12: -0.01em;
 }
 
 *,
@@ -114,9 +120,11 @@ html {
   background: var(--body-bg);
   color: var(--body-color);
   scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
   min-height: 100%;
   text-rendering: optimizeLegibility;
+  font-family: var(--font-sans);
+  font-size: 106.25%;
+  quotes: "“" "”" "‘" "’";
 }
 
 body {
@@ -124,9 +132,21 @@ body {
   min-height: 100%;
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
-  font-family: var(--font-geist-sans);
-  font-size: 15px;
-  line-height: 1.5;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.4705882353;
+  letter-spacing: var(--tracking-17);
+}
+
+body,
+input,
+textarea,
+select,
+button {
+  font-synthesis: none;
+  -moz-font-feature-settings: "kern";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {

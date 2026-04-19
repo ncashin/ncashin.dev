@@ -25,13 +25,6 @@ const ogImageURL = new URL(ogImagePath, canonicalURL.origin).href;
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/images/logos/natalie.svg" />
-    <link
-      rel="preload"
-      href="/fonts/Geist-Variable.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
     <link rel="preload" as="image" href={navLogoPreload} />
     <link rel="preload" as="image" href="/images/logos/x.svg" />
     <link rel="preload" as="image" href="/images/logos/mail.svg" />
@@ -39,7 +32,7 @@ const ogImageURL = new URL(ogImagePath, canonicalURL.origin).href;
     <link rel="preload" as="image" href="/images/logos/c-core.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#fdfdfc" />
+    <meta name="theme-color" content="#ffffff" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL.href} />
