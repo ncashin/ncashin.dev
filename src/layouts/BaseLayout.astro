@@ -48,7 +48,7 @@ const ogImageURL = new URL(ogImagePath, canonicalURL.origin).href;
     <meta name="twitter:image" content={ogImageURL} />
   </head>
   <body>
-    <div class="relative z-10 mx-auto flex max-w-xl px-8 pb-0 pt-12">
+    <div class="relative z-10 mx-auto flex max-w-xl px-8 pb-0 pt-16">
       <div class="flex min-h-screen min-w-0 max-w-xl flex-1 flex-col gap-16">
         <slot />
       </div>
@@ -61,7 +61,8 @@ const ogImageURL = new URL(ogImagePath, canonicalURL.origin).href;
       decoding="async"
       loading="lazy"
       aria-hidden="true"
-      class="pointer-events-none fixed bottom-3 right-3 z-0 h-auto w-[min(46vw,15rem)] select-none sm:bottom-5 sm:right-5 sm:w-[min(42vw,18rem)]"
+      style="visibility:hidden;position:absolute;width:0;height:0;"
+      class="pointer-events-none"
     />
   </body>
 </html>
