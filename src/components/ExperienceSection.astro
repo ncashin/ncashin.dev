@@ -42,8 +42,8 @@ const entries = [
           rel="noopener noreferrer"
           class="-mx-[0.3575rem] flex flex-row items-start justify-between gap-4 pl-2 pr-2.5 py-1.5 text-sm font-medium tracking-apple-14 text-[hsl(var(--foreground))] no-underline transition-colors hover:bg-[hsl(var(--muted))] md:items-center"
         >
-          <div class="flex min-w-0 flex-row flex-wrap items-center gap-x-3 gap-y-1.5">
-            <span class="inline-flex shrink-0 items-center gap-2.5">
+          <div class="flex min-w-0 flex-row flex-wrap items-center gap-x-4 gap-y-1.5">
+            <span class="inline-flex shrink-0 items-center gap-2">
               <span
                 class:list={[
                   "inline-flex h-5 w-5 shrink-0 items-center justify-center",
@@ -70,11 +70,11 @@ const entries = [
                   }
                 />
               </span>
-              <span class:list={[e.company === "C-CORE" && "pl-[1px]"]}>
+              <span class:list={[e.company === "C-CORE" && "pl-[1.5px]"]}>
                 {e.company}
               </span>
             </span>
-            <span class="text-[hsl(var(--secondary-foreground))]">
+            <span class="text-[hsl(var(--secondary-foreground))] font-normal">
               {e.title}
             </span>
           </div>
