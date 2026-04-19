@@ -34,7 +34,7 @@ const entries = [
     Experience
   </h2>
   <div
-    class="-mx-[0.3575rem] -mt-1 grid grid-cols-[auto_minmax(0,1fr)_auto] gap-x-4 text-sm font-medium tracking-apple-14 text-[hsl(var(--foreground))] items-start md:items-center"
+    class="-mx-[0.3575rem] -mt-1 flex flex-col text-sm font-medium tracking-apple-14 text-[hsl(var(--foreground))]"
   >
     {
       entries.map((e) => (
@@ -42,7 +42,7 @@ const entries = [
           href={e.href}
           target="_blank"
           rel="noopener noreferrer"
-          class="group col-span-3 grid grid-cols-subgrid py-1.5 pl-2 pr-2.5 text-[hsl(var(--foreground))] no-underline [-webkit-tap-highlight-color:transparent] outline-offset-2 transition-[background-color,color] duration-150 ease-out motion-reduce:transition-none hover:bg-zinc-100 active:bg-zinc-100"
+          class="group flex min-w-0 flex-row items-start gap-x-2.5 py-1.5 pl-2 pr-2.5 text-[hsl(var(--foreground))] no-underline [-webkit-tap-highlight-color:transparent] outline-offset-2 transition-[background-color,color] duration-150 ease-out motion-reduce:transition-none hover:bg-zinc-100 active:bg-zinc-100 md:items-center"
         >
           <span class="inline-flex min-w-0 shrink-0 items-center gap-2">
             <span
@@ -71,14 +71,9 @@ const entries = [
                 }
               />
             </span>
-            <span class:list={[e.company === "C-CORE" && "pl-[1.5px]"]}>
-              {e.company}
-            </span>
+            <span>{e.company}</span>
           </span>
-          <span
-            class:list={[e.company === "C-CORE" && "pl-[2px]"]}
-            class="min-w-0 font-normal text-[hsl(var(--secondary-foreground))] transition-colors duration-150 ease-out motion-reduce:transition-none group-hover:text-[hsl(var(--foreground))]"
-          >
+          <span class="min-w-0 flex-1 font-normal text-[hsl(var(--secondary-foreground))] transition-colors duration-150 ease-out motion-reduce:transition-none group-hover:text-[hsl(var(--foreground))]">
             {e.title}
           </span>
           <span class="shrink-0 font-medium tracking-apple-14 tabular-nums text-[hsl(var(--muted-foreground))] transition-colors duration-150 ease-out motion-reduce:transition-none group-hover:text-[hsl(var(--secondary-foreground))]">
