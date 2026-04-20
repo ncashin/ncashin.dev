@@ -3,38 +3,22 @@ interface Props {
   logoSrc?: string;
 }
 
-const { logoSrc = "/images/image.png" } = Astro.props;
+const { logoSrc = "/images/logos/natalie-no-bg.svg" } = Astro.props;
 ---
 
-<nav class="w-full" aria-label="Site">
-  <a class="block w-full" href="/" aria-label="Natalie Cashin — Home">
-    <div
-      class="relative w-full overflow-hidden"
-      style="height: min(54vh); max-height: 32rem;"
-    >
-      <span
-        class="pointer-events-none absolute left-0 top-0 z-20 pt-3 font-[family-name:var(--font-display)] text-xl font-medium leading-tight tracking-tight text-[hsl(var(--foreground))] sm:pt-4"
-      >
-        Natalie <br /> Cashin
-      </span>
-      <div
-        class="pointer-events-none absolute inset-0 flex items-center justify-center px-[14%]"
-      >
-        <img
-          src={logoSrc}
-          alt=""
-          width="362"
-          height="689"
-          class="h-auto max-h-full w-auto max-w-full object-contain object-center"
-          fetchpriority="high"
-          decoding="sync"
-        />
-      </div>
-      <div
-        class="pointer-events-none absolute inset-x-0 bottom-0 h-[45%] min-h-[4.5rem] bg-gradient-to-t from-[hsl(var(--background))] via-[hsl(var(--background)_/_0.72)] to-transparent"
-        aria-hidden="true"
-      >
-      </div>
-    </div>
+<nav class="flex items-center gap-3.5" aria-label="Site">
+  <a class="flex items-center gap-3.5" href="/">
+    <img
+      src={logoSrc}
+      alt="Natalie"
+      width="32"
+      height="32"
+      class="h-8 w-8 shrink-0"
+      fetchpriority="high"
+      decoding="sync"
+    />
+    <span class="text-base font-medium text-[hsl(var(--foreground))]">
+      Natalie Cashin
+    </span>
   </a>
 </nav>
